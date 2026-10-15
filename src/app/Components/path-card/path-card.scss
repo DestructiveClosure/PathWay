@@ -1,0 +1,46 @@
+.path-card{
+    position: relative;
+    padding: 10px;
+    background-color: #eee;
+    width: fit-content;
+    border-radius: 5px;
+    border: 2px solid olivedrab;
+    h3{
+        font-size: 1.2rem;
+    }
+    span{
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    dl{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .easy,.mod,.hard{
+        padding: 10px;
+        background-color: rgba(9, 179, 9, 0.884);
+        width: fit-content;
+        color: aliceblue;
+        border-radius: 5px;
+    }
+
+    .mod{
+        background-color: orange;
+        color: navy;
+    }
+
+    .hard{
+        background-color: rgb(240, 50, 36);
+    }
+    #svgelem{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        scale: 1.2;
+        background-color: orange;
+        border: 0;
+        color: white;
+    }
+}

@@ -1,0 +1,7 @@
+<div class="path-wrapper">
+    @for (path of pathList; track path.id; let idx = $index, even = $even){
+        <app-path-card [index]="idx" [even]="even" (selected)="onPathOpen($event)" (favouriteToggled)="toggleFavourite($event)" [path]="path"/>
+    }@empty{
+        <div>No trails match</div>
+    }
+</div>
