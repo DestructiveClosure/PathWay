@@ -1,44 +1,49 @@
 <section class="path-card" (click)="toggleCard()">
     <h3>{{path().name}}</h3>
-    <span>Path #{{index() + 1}}</span>
     
-    <dl>
-        <dt>{{path().region}}</dt>
-        <dt>{{path().distanceKm}}KM</dt>
-        <dt>{{path().elevationGainM}}M</dt>
-        @switch(path().difficulty){
-            @case ('easy'){
-                <dt class="easy">
-                    Easy
-                </dt>
-            }                 
-            @case ('moderate'){
-                <dt class="mod">
-                    Moderate
-                </dt>
-            }           
-            @case ('hard'){
-                <dt class="hard">
-                    Hard
-                </dt>
-            }           
-        }
-        @if(path().description){
-                <dt>{{path().description}}</dt>
-        }@else{
-            <dt>No description provided</dt>
-        }
-        @if(path().dogFriendly){
-            <dt>🐶</dt>
-        }
-    </dl>
+    
+    @if(expanded){
+        <span>Path #{{index() + 1}}</span>
+        <dl>
+            <dt>{{path().region}}</dt>
+            <dt>{{path().distanceKm}}KM</dt>
+            <dt>{{path().elevationGainM}}M</dt>
+            @switch(path().difficulty){
+                @case ('easy'){
+                    <dt class="easy">
+                        Easy
+                    </dt>
+                }                 
+                @case ('moderate'){
+                    <dt class="mod">
+                        Moderate
+                    </dt>
+                }           
+                @case ('hard'){
+                    <dt class="hard">
+                        Hard
+                    </dt>
+                }           
+            }
+            @if(path().description){
+                    <dt>{{path().description}}</dt>
+            }@else{
+                <dt>No description provided</dt>
+            }
+            @if(path().dogFriendly){
+                <dt>Dog Friendly: 🐶</dt>
+            }
+        </dl>
+    }
     <button
     type="button"
     id="svgelem"
     (click)="$event.stopPropagation(); toggleFavourite()"
     >
-        ★
+        {{isFavourite() ? '★' : '☆'}}
     </button>
-    
+    <button
+    id="hide-stats"
+    (click)="$event.stopPropagation(); hideStats()">Hide Stats</button>
 
 </section>

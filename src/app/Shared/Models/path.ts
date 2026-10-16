@@ -10,5 +10,6 @@ export interface Path {
     difficulty: DIFFICULTY,
     surface: SURFACE,
     dogFriendly: boolean,
-    description?: string
+    description?: string,
+    isFavourite?: boolean
 }

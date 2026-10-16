@@ -20,12 +20,18 @@ export class PathCard {
     selected = output<Path>();
     favouriteToggled = output<number>();
 
+    expanded = true;
+
     protected toggleCard(): void {
       this.selected.emit(this.path());
     }
 
     protected toggleFavourite(): void {
       this.favouriteToggled.emit(this.path().id);
+    }
+
+    protected hideStats(): void{
+      this.expanded = !this.expanded;
     }
     
 }
