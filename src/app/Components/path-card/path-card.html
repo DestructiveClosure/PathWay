@@ -1,4 +1,4 @@
-<section class="path-card" (click)="toggleCard()">
+<section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
     <h3>{{path().name}}</h3>
     
     
@@ -38,7 +38,7 @@
     <button
     type="button"
     id="svgelem"
-    (click)="$event.stopPropagation(); toggleFavourite()"
+    (click)="toggleFavourite($event)"
     >
         {{isFavourite() ? '★' : '☆'}}
     </button>

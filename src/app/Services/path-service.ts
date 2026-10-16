@@ -72,5 +72,21 @@ export class PathService {
     ]);
 
     pathList = this.paths.asReadonly();
-    pathCount = computed(() => this.paths().length)
+    pathCount = computed(() => this.paths().length);
+
+    private favouriteIds = signal<readonly number[]>([]);
+
+    toggleFavourite(id: number): void{
+        this.favouriteIds.update((ids) => 
+            ids.includes(id) ? ids.filter((existing) => existing !== id) : [...ids, id],
+        )
+    }
+
+    isFavourite(id:number): boolean{
+        return this.favouriteIds().includes(id);
+    }
+
+    getById(id: number): Path | undefined {
+        return this.paths().find((path) => path.id === id);
+    }
 }

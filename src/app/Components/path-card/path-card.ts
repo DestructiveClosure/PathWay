@@ -26,7 +26,8 @@ export class PathCard {
       this.selected.emit(this.path());
     }
 
-    protected toggleFavourite(): void {
+    protected toggleFavourite(event: MouseEvent): void {
+      event.stopPropagation();
       this.favouriteToggled.emit(this.path().id);
     }
 
