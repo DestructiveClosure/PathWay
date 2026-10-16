@@ -1,8 +1,15 @@
-import { computed, Service, signal } from '@angular/core';
+import { computed, inject, Service, signal } from '@angular/core';
 import { Path } from '../Shared/Models/path';
+import { PATH_CONFIG } from '../Shared/path-config';
 
 @Service()
 export class PathService {
+
+    // Inject config file into service
+    private config = inject(PATH_CONFIG);
+
+    readonly defaultCity = this.config.defaultCity;
+
     private paths = signal<Path[]>([
         {
             id: 1,
@@ -28,7 +35,7 @@ export class PathService {
         {
             id: 3,
             name: "Ruscom Shores Trail",
-            region: "St. Clair Beach",
+            region: "St. Clair",
             distanceKm: 4.2,
             elevationGainM: 3,
             difficulty: 'easy',

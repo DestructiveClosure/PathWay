@@ -1,5 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Path } from '../../Shared/Models/path';
+import { PathService } from '../../Services/path-service';
+import { PATH_CONFIG } from '../../Shared/path-config';
 
 
 @Component({
@@ -9,7 +11,9 @@ import { Path } from '../../Shared/Models/path';
   templateUrl: './path-card.html',
 })
 export class PathCard {
+    protected config = inject(PATH_CONFIG);
 
+    protected city = this.config.defaultCity;
     // Inputs
     path = input.required<Path>();
     isFavourite = input(false);

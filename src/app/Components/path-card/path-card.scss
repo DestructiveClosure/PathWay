@@ -64,7 +64,23 @@
     margin: 1rem 0 0;
     padding-top: 1rem;
     border-top: 1px solid var(--divider);
+
+    
   }
+  .location-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;  
+    
+    dt{
+      padding: 10px;
+      background-color: var(--accent);
+      border-radius: var(--card-border);
+      color: var(--card-bg);
+    }
+  }
+
 
   dt {
     color: var(--text-muted);

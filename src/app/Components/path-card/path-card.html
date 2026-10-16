@@ -1,13 +1,13 @@
 <section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
-    <h3>{{path().name}}</h3>
-    
-    
+    <h3>{{path().name}}</h3>    
     @if(expanded){
         <span>Path #{{index() + 1}}</span>
         <dl>
-            <dt>{{path().region}}</dt>
-            <dt>{{path().distanceKm}}KM</dt>
-            <dt>{{path().elevationGainM}}M</dt>
+           <aside class="location-container">
+                <dt>{{path().region}}</dt>
+                <dt>{{path().distanceKm}}KM</dt>
+                <dt>{{path().elevationGainM}}M</dt>
+           </aside>
             @switch(path().difficulty){
                 @case ('easy'){
                     <dt class="easy">
