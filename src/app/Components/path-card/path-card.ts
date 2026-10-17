@@ -23,6 +23,7 @@ export class PathCard {
     // Outputs
     selected = output<Path>();
     favouriteToggled = output<number>();
+    remove = output<Path>();
 
     expanded = true;
 
@@ -35,8 +36,14 @@ export class PathCard {
       this.favouriteToggled.emit(this.path().id);
     }
 
-    protected hideStats(): void{
+    protected hideStats(event: MouseEvent): void{
+      event.stopPropagation();
       this.expanded = !this.expanded;
+    }
+
+    removePath(event: MouseEvent): void{
+      event.stopPropagation();
+      this.remove.emit(this.path());
     }
     
 }

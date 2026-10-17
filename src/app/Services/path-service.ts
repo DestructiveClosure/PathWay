@@ -68,7 +68,7 @@ export class PathService {
         {
             id: 6,
             name: "Heritage Trail",
-            region: "Amherstburg",
+            region: "Lasalle",
             distanceKm: 6.5,
             elevationGainM: 4,
             difficulty: 'hard',
@@ -95,5 +95,10 @@ export class PathService {
 
     getById(id: number): Path | undefined {
         return this.paths().find((path) => path.id === id);
+    }
+
+    removePath(id: number): void{
+        console.log(`Hello from the RemoveMethod\nThe Path ID: ${id}`)
+        this.paths.update(path => path.filter(i => i.id !== id));
     }
 }

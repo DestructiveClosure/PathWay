@@ -6,7 +6,9 @@
         [isFavourite]="pathServ.isFavourite(path.id)"
         (selected)="onPathOpen($event)" 
         (favouriteToggled)="pathServ.toggleFavourite($event)"
-        [path]="path" />
+        [path]="path"
+        (remove)="onPathRemove($event)"
+        />
     }@empty{
         <div>No trails match</div>
     }

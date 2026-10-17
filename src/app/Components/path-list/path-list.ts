@@ -24,4 +24,8 @@ export class PathList {
   protected toggleFavourite(id: number): void {
     console.log(`Toggled favourite ${id}`);
   }
+
+  onPathRemove(path: Path): void{
+    this.pathServ.removePath(path.id);
+  }
 }

@@ -40,10 +40,16 @@
     id="svgelem"
     (click)="toggleFavourite($event)"
     >
-        {{isFavourite() ? '★' : '☆'}}
+        <span id="star">{{isFavourite() ? '★' : '☆'}}</span>
     </button>
     <button
     id="hide-stats"
-    (click)="$event.stopPropagation(); hideStats()">Hide Stats</button>
+    (click)="hideStats($event)">Hide Stats</button>
+    <button
+    id="remove-path"
+    (click)="removePath($event)"
+    >
+        Remove Path
+    </button>
 
 </section>
