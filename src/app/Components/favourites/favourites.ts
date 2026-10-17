@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { PathService } from '../../Services/path-service';
 import { PathCard } from '../path-card/path-card';
 
@@ -10,5 +10,6 @@ import { PathCard } from '../path-card/path-card';
 })
 export class Favourites {
   protected pathServ = inject(PathService);
- 
+  
+  
 }

@@ -35,7 +35,7 @@ export class PathService {
         {
             id: 3,
             name: "Ruscom Shores Trail",
-            region: "St. Clair",
+            region: "Windsor",
             distanceKm: 4.2,
             elevationGainM: 3,
             difficulty: 'easy',
@@ -101,7 +101,7 @@ export class PathService {
         {
             id: 9,
             name: "Ruscom River Trail",
-            region: "St. Clair",
+            region: "Windsor",
             distanceKm: 6.8,
             elevationGainM: 7,
             difficulty: 'moderate',

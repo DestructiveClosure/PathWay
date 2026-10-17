@@ -141,3 +141,62 @@ Add correct matching to ensure Angular knows which path to take during routes
 Correctly import all dependencies needed
 
 imports: [RouterOutlet, RouterLink, PathList, RouterLinkActive],
+
+8. Adding Dynamic Routes for :id
+
+Add HTML Template to PathByType
+
+    <h2>{{region()}} Path</h2>
+
+    @for (path of paths(); track path.id; let idx = $index, even = $even) {
+    <app-path-card
+        [path]="path"
+        [index]="idx" 
+        [even]="even"
+        [isFavourite]="pathServ.isFavourite(path.id)"
+        (favouriteToggled)="pathServ.toggleFavourite($event)"
+    />
+    }@empty{
+        <h2>No Paths in Region</h2>
+    }
+
+9. PathByType logic
+
+Add Logic into PathByType component to render specific property on the screen
+
+    export class PathByType {
+    protected pathServ = inject(PathService);
+    // Clicking between Windsor, Amherstburg, and Lasalle reuses this same component instance.
+    region = input.required<string>();
+
+    protected paths = computed(() =>
+        this.pathServ.pathList().filter((p) => p.region === this.region()),
+    )
+    }
+
+10. Wiring up the routes in app.routes.ts
+
+    export const routes: Routes = [
+        // Redirect user to paths if they try to go to homepage or an empty path url
+        {
+            path: '',
+            redirectTo: '/paths',
+            pathMatch: 'full'
+        },
+        {
+            path: 'paths',
+            component: PathList
+        },
+        {
+            path: 'paths/region/:region',
+            component: PathByType
+        },
+        {
+            path: 'favourites',
+            component: Favourites,
+        },
+        {
+            path: '**',
+            component: NotFound
+        }
+    ];

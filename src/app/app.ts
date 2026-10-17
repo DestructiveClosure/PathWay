@@ -1,7 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { Path } from './Shared/Models/path';
-import { PathList } from './Components/path-list/path-list';
 import { PathService } from './Services/path-service';
 
 @Component({

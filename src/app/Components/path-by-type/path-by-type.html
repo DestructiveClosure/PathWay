@@ -1,1 +1,13 @@
-<p>path-by-type works!</p>
+<h2>{{region()}} Path</h2>
+
+@for (path of paths(); track path.id; let idx = $index, even = $even) {
+  <app-path-card
+    [path]="path"
+    [index]="idx" 
+    [even]="even"
+    [isFavourite]="pathServ.isFavourite(path.id)"
+    (favouriteToggled)="pathServ.toggleFavourite($event)"
+  />
+}@empty{
+    <h2>No Paths in Region</h2>
+}
