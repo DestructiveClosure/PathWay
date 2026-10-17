@@ -6,3 +6,29 @@
     text-transform: uppercase;
     font-weight: bolder;
 }
+
+.btn-error{
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #587a2b;
+    border-radius: 0.5rem;
+    background: #587a2b;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+
+    &:hover {
+      border-color: #3f5a1c;
+      background: #3f5a1c;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+}
