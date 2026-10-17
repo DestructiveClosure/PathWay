@@ -1,7 +1,5 @@
 .path-wrapper{
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.7rem;
 }

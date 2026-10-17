@@ -76,12 +76,72 @@ export class PathService {
             dogFriendly: false,
             description: "A longer route through green spaces with a few challenging sections"
         },
+        {
+            id: 7,
+            name: "Ojibway Prairie Trail",
+            region: "Windsor",
+            distanceKm: 3.2,
+            elevationGainM: 8,
+            difficulty: 'easy',
+            surface: 'dirt',
+            dogFriendly: false,
+            description: "A peaceful loop through prairie and woodland habitat"
+        },
+        {
+            id: 8,
+            name: "Malden Park Trail",
+            region: "Windsor",
+            distanceKm: 5.1,
+            elevationGainM: 25,
+            difficulty: 'moderate',
+            surface: 'gravel',
+            dogFriendly: true,
+            description: "A rolling trail with scenic views and wooded sections"
+        },
+        {
+            id: 9,
+            name: "Ruscom River Trail",
+            region: "St. Clair",
+            distanceKm: 6.8,
+            elevationGainM: 7,
+            difficulty: 'moderate',
+            surface: 'gravel',
+            dogFriendly: true,
+            description: "A quiet countryside route following the Ruscom River"
+        },
+        {
+            id: 10,
+            name: "LaSalle Trail",
+            region: "LaSalle",
+            distanceKm: 7.4,
+            elevationGainM: 10,
+            difficulty: 'easy',
+            surface: 'paved',
+            dogFriendly: true,
+            description: "A paved multi-use route through parks and neighbourhoods"
+        },
+        {
+            id: 11,
+            name: "Windsor Riverfront Trail",
+            region: "Windsor",
+            distanceKm: 4.6,
+            elevationGainM: 3,
+            difficulty: 'easy',
+            surface: 'paved',
+            dogFriendly: true,
+            description: "A flat waterfront path with views across the Detroit River"
+        },
     ]);
+
+    ;
 
     pathList = this.paths.asReadonly();
     pathCount = computed(() => this.paths().length);
 
     private favouriteIds = signal<readonly number[]>([]);
+    favouriteCount = computed(() => this.favouriteIds().length);
+    favouriteList = computed(() => this.paths().filter((f) => this.favouriteIds().includes(f.id)));
+    
 
     toggleFavourite(id: number): void{
         this.favouriteIds.update((ids) => 

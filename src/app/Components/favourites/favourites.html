@@ -1,0 +1,12 @@
+
+@for(path of pathServ.favouriteList(); track path.id; let idx = $index, even = $even){
+    <app-path-card
+        [path]="path"
+        [index]="idx" 
+        [even]="even"
+        (favouriteToggled)="pathServ.toggleFavourite($event)"
+        [isFavourite]="true"
+    ></app-path-card>
+}@empty{
+    <p class="error">No favourites yet</p>
+}

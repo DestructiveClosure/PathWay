@@ -1,4 +1,11 @@
 <main class="container">
     <h1>{{title()}}</h1>
-    <app-path-list></app-path-list>
+    <nav class="nav-bar">
+        <a routerLinkActive="active" routerLink="/paths" [routerLinkActiveOptions]="{ exact: true }">All Paths</a>
+        <!-- <a routerLinkActive="active" routerLink="/paths/type/easy" href="">Easy</a>
+        <a routerLinkActive="active" routerLink="/paths/type/moderate" href="">Moderate</a>
+        <a routerLinkActive="active" routerLink="/paths/type/hard" href="">Hard</a> -->
+        <a routerLinkActive="active" routerLink="/favourites">Favourites ( {{favouriteLength()}} )</a>
+    </nav>
+    <router-outlet/>
 </main>
