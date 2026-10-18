@@ -105,7 +105,8 @@
   }
 
   #hide-stats,
-  #remove-path {
+  #remove-path,
+  #view-details {
     width: 100%;
     margin-top: 1rem;
     padding: 0.625rem 0.875rem;
@@ -139,6 +140,22 @@
     &:hover {
       border-color: #6b281f;
       background: #6b281f;
+      transform: translateY(-1px);
+    }
+  }
+
+  #view-details{
+    border: 1px solid #475c2b;
+    background: #475c2b;
+
+    a{
+      text-decoration: none;
+      color: #fff !important;
+    }
+
+    &:hover {
+      border-color: #37491f;
+      background: #37491f;
       transform: translateY(-1px);
     }
   }

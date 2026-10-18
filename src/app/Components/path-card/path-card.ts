@@ -2,10 +2,11 @@ import { Component, inject, input, output } from '@angular/core';
 import { Path } from '../../Shared/Models/path';
 import { PathService } from '../../Services/path-service';
 import { PATH_CONFIG } from '../../Shared/path-config';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-path-card',
   styleUrl: './path-card.scss',
   templateUrl: './path-card.html',

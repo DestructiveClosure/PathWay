@@ -1,1 +1,12 @@
-<p>path-detail works!</p>
+@if (path(); as p) {
+  <article class="detail">
+    <h2>{{p.name}}</h2>
+    <p>Region: {{p.region}}</p>
+    <button type="button" class="favourite-button" (click)="pathServ.toggleFavourite(p.id)">
+      {{ pathServ.isFavourite(p.id) ? '★ Remove from favourites' : '☆ Add to favourites' }}
+    </button>
+  </article>
+  <a routerLink="/paths">Back to all paths</a>
+} @else {
+  
+}

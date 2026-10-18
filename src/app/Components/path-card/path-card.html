@@ -51,5 +51,12 @@
     >
         Remove Path
     </button>
+    <button
+        id="view-details"
+        (click)="$event.stopPropagation()"
+        [routerLink]="['/paths', path().id]"
+    >
+        View Details
+    </button>
 
 </section>
