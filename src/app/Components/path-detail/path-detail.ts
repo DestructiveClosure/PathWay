@@ -1,6 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { PathService } from '../../Services/path-service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
@@ -10,7 +10,13 @@ import { RouterLink } from '@angular/router';
 })
 export class PathDetail {
   protected pathServ = inject(PathService);
+  private router = inject(Router);
 
   id = input.required<string>();
   protected path = computed(() => this.pathServ.getById(Number(this.id())));
+
+  protected onDelete(id: number): void {
+    this.pathServ.removePath(id);
+    this.router.navigate(['/paths']);
+  }
 }

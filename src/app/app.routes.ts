@@ -33,6 +33,10 @@ export const routes: Routes = [
         path: 'add', 
         component: PathForm 
     },
+    { 
+        path: 'edit/:id', 
+        component: PathForm 
+    },
     {
         path: '**',
         component: NotFound

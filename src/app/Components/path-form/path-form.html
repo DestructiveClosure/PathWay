@@ -1,14 +1,18 @@
-<h2>Add Path Form</h2>
+<h2>{{ isEditMode() ? 'Edit Path' : 'Add Path' }}</h2>
 <form action="" [formGroup]="pathForm" class="path-form" (ngSubmit)="onSubmit()">
     <label>Name</label>
     <input type="text" formControlName="name">
     <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
     @if (pathForm.controls.name.touched && pathForm.controls.name.invalid) {
-        <p class="error">Name is required and must be at least 2 characters.</p>
+        <p class="error">Must be at least 2 characters.</p>
     }
 
     <label>Region</label>
-    <input type="text" formControlName="region">
+    <select class="surface-sl" formControlName="region">
+      <option value="Lasalle">Lasalle</option>
+      <option value="Windsor">Windsor</option>
+      <option value="Tecumseh">Tecumseh</option>
+    </select>
     <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
     @if (pathForm.controls.region.touched && pathForm.controls.region.invalid) {
         <p class="error">Region required</p>
@@ -18,7 +22,7 @@
     <textarea type="text" formControlName="description"></textarea>
     <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
     @if (pathForm.controls.description.touched && pathForm.controls.description.invalid) {
-        <p class="error">Description required</p>
+        <p class="error">Error - required</p>
     }
     <label>
         Surface
@@ -37,6 +41,6 @@
     </label>
 
     <button type="submit" [disabled]="pathForm.invalid">
-        Add Path
+        {{ isEditMode() ? 'Save Changes' : 'Add Brewery' }}
   </button>
 </form>

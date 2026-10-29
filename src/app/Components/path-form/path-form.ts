@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
@@ -14,8 +14,11 @@ export class PathForm {
   private fb = inject(FormBuilder);
   private pathServ = inject(PathService);
   private router = inject(Router);
+  protected isEditMode = signal(true);
+ 
+  // Filled from :id route parameter on /edit/:id by withComponentInputBinding
 
-  // Add four fields with fb.group
+  id = input<string>();
 
   // nonNullable means reset() goes back to these 
   // starting values instead of null,
@@ -29,6 +32,30 @@ export class PathForm {
     dogFriendly: [true],
   })
 
+  constructor(){
+    // An effect reruns id() changes, so going from edit/1 to edit/2
+    // refills the form even though angular reusees the same component
+
+    effect(() => {
+      const id = this.id();
+      if(id === undefined){
+        return;
+      }
+
+      const path = this.pathServ.getPath(Number(id));
+
+      if(path){
+        // PatchValue() fills only the field it is given. The form has no id field,
+        // so the id is ignfored here and added back on submit.
+        this.pathForm.patchValue(
+          {...path, dogFriendly: path.dogFriendly ?? false}
+        );
+      }
+    })
+  }
+
+
+
   protected onSubmit(): void{
     if(this.pathForm.invalid){
       return;
@@ -37,31 +64,18 @@ export class PathForm {
     // getRawValue() includes disaled controls too. value would skip them.
 
     const formValue = this.pathForm.getRawValue();
+    const id = this.isEditMode() ? Number(this.id()) : this.pathServ.nextId();
+
+    if(this.isEditMode()){
+      this.pathServ.updatePath({id, ...formValue})
+    }else{
+      this.pathServ.addPath(formValue as Path);
+    }
     
-    this.pathServ.addPath(formValue as Path);
+    
     this.pathForm.reset();
+    this.router.navigate(['/paths', id])
     
   }
-
-
-
-  // protected onSubmit(): void {
-  //   if (this.breweryForm.invalid) {
-  //     return;
-  //   }
-
-  //   // getRawValue() includes disabled controls too. value would skip them.
-  //   const formValue = this.breweryForm.getRawValue();
-  //   const id = this.isEditMode() ? Number(this.id()) : this.breweryService.nextId();
-
-  //   if (this.isEditMode()) {
-  //     this.breweryService.updateBrewery({ id, ...formValue });
-  //   } else {
-  //     this.breweryService.addBrewery({ id, ...formValue });
-  //   }
-
-  //   this.breweryForm.reset();
-  //   this.router.navigate(['/breweries', id]);
-  // }
 
 }

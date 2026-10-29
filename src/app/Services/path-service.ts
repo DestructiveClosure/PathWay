@@ -66,9 +66,19 @@ export class PathService {
             ids.includes(id) ? ids.filter((existing) => existing !== id) : [...ids, id],
         )
     }
+    // map() builds a new array, so the signal sees a new reference and notifies its readers.
+    updatePath(updated: Path): void {
+        this.paths.update((list) => list.map((p) => (p.id === updated.id ? updated : p)));
+    }
 
+    // Used by the form when editing, Same lookup as getById, named for that purpose.
     getPath(id: number): Path | undefined {
         return this.getById(id);
+    }
+
+    // There is no server to hand out ids yet, so a new brewery gets one more than the largest id.
+    nextId(): number {
+        return Math.max(0, ...this.paths().map((b) => b.id)) + 1;
     }
 
     isFavourite(id:number): boolean{

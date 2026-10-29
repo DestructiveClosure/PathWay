@@ -5,6 +5,8 @@
     <button type="button" class="favourite-button" (click)="pathServ.toggleFavourite(p.id)">
       {{ pathServ.isFavourite(p.id) ? '★ Remove from favourites' : '☆ Add to favourites' }}
     </button>
+    <button class="remove-button" (click)="onDelete(p.id)">Remove</button>
+    <button class="edit-button" [routerLink]="['/edit', p.id]">Edit</button>
   </article>
   <a routerLink="/paths">Back to all paths</a>
 } @else {

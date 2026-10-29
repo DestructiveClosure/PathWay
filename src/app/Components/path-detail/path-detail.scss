@@ -26,7 +26,9 @@
     line-height: 1.5;
   }
 
-  .favourite-button {
+  .favourite-button,
+  .remove-button,
+  .edit-button {
     width: 100%;
     margin-top: 1rem;
     padding: 0.625rem 0.875rem;
@@ -45,6 +47,35 @@
     &:hover {
       border-color: #3f5a1c;
       background: #3f5a1c;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  .remove-button{
+    border-color: #7a342b;
+    background: #7a342b;
+    border: 1px solid #7a342b;
+    &:hover {
+      border-color: #7c2d22;
+      background: #7c2d22;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .edit-button{
+    border-color: #585656;
+    background: #585656;
+    border: 1px solid #585656;
+    &:hover {
+      border-color: #424141;
+      background: #424141;
       transform: translateY(-1px);
     }
 
