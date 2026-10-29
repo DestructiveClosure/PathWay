@@ -5,10 +5,8 @@ export interface Path {
     readonly id: number,
     name: string,
     region: string,
-    distanceKm: number,
-    elevationGainM: number,
-    difficulty: DIFFICULTY,
-    surface: SURFACE,
+    difficulty: string,
+    surface: string,
     dogFriendly: boolean,
     description?: string,
     isFavourite?: boolean

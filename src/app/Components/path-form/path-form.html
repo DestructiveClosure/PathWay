@@ -1,0 +1,42 @@
+<h2>Add Path Form</h2>
+<form action="" [formGroup]="pathForm" class="path-form" (ngSubmit)="onSubmit()">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
+    @if (pathForm.controls.name.touched && pathForm.controls.name.invalid) {
+        <p class="error">Name is required and must be at least 2 characters.</p>
+    }
+
+    <label>Region</label>
+    <input type="text" formControlName="region">
+    <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
+    @if (pathForm.controls.region.touched && pathForm.controls.region.invalid) {
+        <p class="error">Region required</p>
+    }
+
+    <label>Description</label>
+    <textarea type="text" formControlName="description"></textarea>
+    <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
+    @if (pathForm.controls.description.touched && pathForm.controls.description.invalid) {
+        <p class="error">Description required</p>
+    }
+    <label>
+        Surface
+    </label>
+    <select class="surface-sl" formControlName="surface">
+      <option value="gravel">Gravel</option>
+      <option value="paved">Paved</option>
+      <option value="dirt">Dirt</option>
+      <option value="rock">Rock</option>
+    </select>
+    
+
+    <label class="checkbox">
+        <input type="checkbox" formControlName="dogFriendly" />
+        Dog Friendly?
+    </label>
+
+    <button type="submit" [disabled]="pathForm.invalid">
+        Add Path
+  </button>
+</form>

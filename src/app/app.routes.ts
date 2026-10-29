@@ -4,6 +4,7 @@ import { Favourites } from './Components/favourites/favourites';
 import { NotFound } from './Components/not-found/not-found';
 import { PathByType } from './Components/path-by-type/path-by-type';
 import { PathDetail } from './Components/path-detail/path-detail';
+import { PathForm } from './Components/path-form/path-form';
 
 export const routes: Routes = [
     // Redirect user to paths if they try to go to homepage or an empty path url
@@ -27,6 +28,10 @@ export const routes: Routes = [
     {
         path: 'favourites',
         component: Favourites,
+    },
+    { 
+        path: 'add', 
+        component: PathForm 
     },
     {
         path: '**',
