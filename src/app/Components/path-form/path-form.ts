@@ -3,6 +3,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
 import { Path } from '../../Shared/Models/path';
+import { createDescriptionValidator } from '../../Services/passwordValidator';
+import { descriptionDiffersFromName } from '../../Services/descriptionValidator';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -26,10 +28,13 @@ export class PathForm {
   protected pathForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     region: ['', [Validators.required]],
-    description: ['', [Validators.required]],
+    description: ['', createDescriptionValidator()],
     difficulty: [''],
     surface: [''],
     dogFriendly: [true],
+  },
+  { 
+    validators: descriptionDiffersFromName() 
   })
 
   constructor(){
@@ -69,7 +74,7 @@ export class PathForm {
     if(this.isEditMode()){
       this.pathServ.updatePath({id, ...formValue})
     }else{
-      this.pathServ.addPath(formValue as Path);
+      this.pathServ.addPath({id, ...formValue});
     }
     
     

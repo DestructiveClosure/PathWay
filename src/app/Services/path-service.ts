@@ -10,6 +10,8 @@ export class PathService {
 
     readonly defaultCity = this.config.defaultCity;
 
+    public guardEnabled = signal(true);
+
     private paths = signal<Path[]>([
         {
             id: 1,
@@ -71,6 +73,8 @@ export class PathService {
         this.paths.update((list) => list.map((p) => (p.id === updated.id ? updated : p)));
     }
 
+    
+
     // Used by the form when editing, Same lookup as getById, named for that purpose.
     getPath(id: number): Path | undefined {
         return this.getById(id);
@@ -92,5 +96,9 @@ export class PathService {
     removePath(id: number): void{
         console.log(`Hello from the RemoveMethod\nThe Path ID: ${id}`)
         this.paths.update(path => path.filter(i => i.id !== id));
+    }
+
+    toggleGuard(): void{
+       this.guardEnabled.update(enabled => !enabled);
     }
 }

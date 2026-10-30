@@ -1,6 +1,11 @@
 <main class="container">
     <h1>{{title()}}</h1>
     <nav class="nav-bar">
+        <div class="
+        {{pathServ.guardEnabled() ? 'unlock' : 'lock'}}
+        " (click)="toggleLock()">
+            {{ pathServ.guardEnabled() ? 'Unlock' : 'Lock' }}
+        </div>
         <a routerLinkActive="active" routerLink="/paths" [routerLinkActiveOptions]="{ exact: true }">All Paths</a>
         <a routerLinkActive="active" routerLink="/paths/region/Tecumseh">Tecumseh</a>
         <a routerLinkActive="active" routerLink="/paths/region/Windsor">Windsor</a>

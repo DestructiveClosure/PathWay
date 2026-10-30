@@ -12,6 +12,12 @@ export class App {
   protected readonly title = signal('PathWay');
   protected pathServ = inject(PathService);
 
+  protected guard = this.pathServ.guardEnabled;
+
+  toggleLock(){
+    this.pathServ.toggleGuard();
+  }
+
   favouriteLength = this.pathServ.favouriteCount;
 
 }
