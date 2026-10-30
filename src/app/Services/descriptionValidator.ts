@@ -7,7 +7,7 @@ export function descriptionDiffersFromName(): ValidatorFn {
     const description = form.get('description')?.value?.trim().toLowerCase();
 
     if (name && description && name === description) {
-      return { descriptionMatches: true };
+      return { descriptionMatches: true }
     }
 
     return null;
