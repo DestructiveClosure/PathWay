@@ -1,10 +1,10 @@
 <main class="container">
-    <h1>{{title()}}</h1>
+        <h1>{{title()}}</h1>
     <nav class="nav-bar">
         <div class="
         {{pathServ.guardEnabled() ? 'unlock' : 'lock'}}
         " (click)="toggleLock()">
-            {{ pathServ.guardEnabled() ? 'Unlock' : 'Lock' }}
+            {{ pathServ.guardEnabled() ? '🔓' : '🔒' }}
         </div>
         <a routerLinkActive="active" routerLink="/paths" [routerLinkActiveOptions]="{ exact: true }">All Paths</a>
         <a routerLinkActive="active" routerLink="/paths/region/Tecumseh">Tecumseh</a>
@@ -14,5 +14,4 @@
         <a routerLinkActive="active" routerLink="/favourites">Favourites ( {{favouriteLength()}} )</a>
     </nav>
     <router-outlet/>
-    
 </main>

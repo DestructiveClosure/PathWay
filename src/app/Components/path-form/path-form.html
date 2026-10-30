@@ -20,7 +20,7 @@
 
     <label>Description</label>
     <textarea type="text" formControlName="description"></textarea>
-    <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
+    <!-- Using hasError to use descriptionRequired argument to check if validation is working -->
     @if(pathForm.controls.description.hasError('descriptionRequired')){
         <p class="error">Description can't start with `description`</p>
     }

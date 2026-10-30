@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
@@ -16,7 +16,9 @@ export class PathForm {
   private fb = inject(FormBuilder);
   private pathServ = inject(PathService);
   private router = inject(Router);
-  protected isEditMode = signal(true);
+
+  // Computing the isEditMode to check if the current id is equal not equal to undefined
+  protected isEditMode = computed(() => this.id() !== undefined);
  
   // Filled from :id route parameter on /edit/:id by withComponentInputBinding
 
@@ -40,6 +42,7 @@ export class PathForm {
   constructor(){
     // An effect reruns id() changes, so going from edit/1 to edit/2
     // refills the form even though angular reusees the same component
+    console.log(`Guard: ${this.isEditMode}`)
 
     effect(() => {
       const id = this.id();
@@ -65,8 +68,6 @@ export class PathForm {
     if(this.pathForm.invalid){
       return;
     }
-
-    // getRawValue() includes disaled controls too. value would skip them.
 
     const formValue = this.pathForm.getRawValue();
     const id = this.isEditMode() ? Number(this.id()) : this.pathServ.nextId();
