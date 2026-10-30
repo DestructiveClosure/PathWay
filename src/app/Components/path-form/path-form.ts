@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
 import { Path } from '../../Shared/Models/path';
-import { createDescriptionValidator } from '../../Services/passwordValidator';
+import { createDescriptionValidator } from '../../Services/createValidator';
 import { descriptionDiffersFromName } from '../../Services/descriptionValidator';
 
 @Component({

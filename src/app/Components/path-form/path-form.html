@@ -21,9 +21,11 @@
     <label>Description</label>
     <textarea type="text" formControlName="description"></textarea>
     <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
-    @if (pathForm.controls.description.touched && pathForm.controls.description.hasError('descriptionRequired')) {
-        <p class="error">Error - description needed</p>
+    @if(pathForm.controls.description.hasError('descriptionRequired')){
+        <p class="error">Description can't start with `description`</p>
     }
+    
+    
     @if (pathForm.hasError('descriptionMatches')) {
         <p class="error">Description shouldn't match name.</p>
     }
