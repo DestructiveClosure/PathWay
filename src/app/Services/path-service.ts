@@ -10,7 +10,7 @@ export class PathService {
 
     readonly defaultCity = this.config.defaultCity;
 
-    public guardEnabled = signal(true);
+    public guardEnabled = signal<boolean>(true);
 
     private paths = signal<Path[]>([
         {
@@ -47,6 +47,15 @@ export class PathService {
             surface: 'dirt',
             dogFriendly: true,
             description: "A multi-use path connecting parks and neighbourhoods"
+        },
+        {
+            id: 5,
+            name: "Devonshire",
+            region: "LaSalle",
+            difficulty: 'moderate',
+            surface: 'dirt',
+            dogFriendly: true,
+            description: "An accessible path connecting football fields"
         },
     ]);
 

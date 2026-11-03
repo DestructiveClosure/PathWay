@@ -9,6 +9,8 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './path-detail.html',
 })
 export class PathDetail {
+
+  // FINISHED: Part 2: Detail Page with computed id
   protected pathServ = inject(PathService);
   private router = inject(Router);
 

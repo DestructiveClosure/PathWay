@@ -9,7 +9,7 @@
 
     <label>Region</label>
     <select class="surface-sl" formControlName="region">
-      <option value="Lasalle">Lasalle</option>
+      <option value="LaSalle">LaSalle</option>
       <option value="Windsor">Windsor</option>
       <option value="Tecumseh">Tecumseh</option>
     </select>
@@ -46,6 +46,6 @@
     </label>
 
     <button type="submit" [disabled]="pathForm.invalid">
-        {{ isEditMode() ? 'Save Changes' : 'Add Brewery' }}
+        {{ isEditMode() ? 'Save Changes' : 'Add Path' }}
   </button>
 </form>
