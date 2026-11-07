@@ -1,7 +1,7 @@
 <section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
     <h3>{{path().name}}</h3>    
     @if(expanded){
-        <span>Character #{{index() + 1}}</span>
+        <span>Star Wars <br/>Character #{{index() + 1}}</span>
         <dl>
             @if(path().description){
                     <dt>{{
@@ -21,12 +21,12 @@
     <button
     id="hide-stats"
     (click)="hideStats($event)">Hide Stats</button>
-    <button
+    <!-- <button
     id="remove-path"
     (click)="removePath($event)"
     >
-        Remove Path
-    </button>
+        Remove Character
+    </button> -->
     <button
         id="view-details"
         (click)="$event.stopPropagation()"

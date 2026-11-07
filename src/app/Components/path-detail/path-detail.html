@@ -3,9 +3,9 @@
 } @else if (path.error()) {
   <!-- This is not the 404 page. The URL matched a route, breweries/:id,
        but the API could not return a brewery for that id. -->
-  <p class="error">Could not load brewery {{ id() }}.</p>
+  <p class="error">Could not load Character {{ id() }}.</p>
   <button type="button" (click)="path.reload()">Try again</button>
-  <a routerLink="/breweries">Back to all breweries</a>
+  <a routerLink="/paths">Back to all characters</a>
 } @else if (path.hasValue()) {
   @let p = path.value();
   <article class="detail">
@@ -13,5 +13,5 @@
     <p>{{p.description}}</p>
   </article>
 
-  <a routerLink="/paths">Back to all Paths</a>
+  <a routerLink="/paths">Back to all characters</a>
 }

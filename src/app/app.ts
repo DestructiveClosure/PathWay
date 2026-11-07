@@ -11,7 +11,7 @@ import { ErrorService } from './Services/error-service';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('Paths');
+  protected readonly title = signal('Star Wars Characters');
   protected pathServ = inject(PathService);
   protected loading = inject(LoadingService);
   protected errorServ = inject(ErrorService);

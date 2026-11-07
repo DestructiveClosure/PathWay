@@ -15,9 +15,9 @@
         " (click)="toggleLock()">
             {{ pathServ.guardEnabled() ? '🔓' : '🔒' }}
         </div>
-        <a routerLinkActive="active" routerLink="/paths" [routerLinkActiveOptions]="{ exact: true }">All Paths</a>
-        <a routerLinkActive="active" routerLink="/add">Add Path</a>
-        <a routerLinkActive="active" routerLink="/my-paths">My Paths</a>
+        <a routerLinkActive="active" routerLink="/paths" [routerLinkActiveOptions]="{ exact: true }">All Characters</a>
+        <a routerLinkActive="active" routerLink="/add">Add Character</a>
+        <a routerLinkActive="active" routerLink="/my-paths">My Characters</a>
         <a routerLinkActive="active" routerLink="/favourites">Favourites ( {{favouriteLength()}} )</a>
     </nav>
     <router-outlet/>

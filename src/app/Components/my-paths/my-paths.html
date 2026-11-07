@@ -16,16 +16,16 @@
     id="remove-path"
     (click)="pathServ.removePath(p._id)"
     >
-        Remove Path
+        Remove Character
     </button>
     <button
         id="view-details"
         (click)="$event.stopPropagation()"
         [routerLink]="['/edit', p._id]"
     >
-        Edit Path
+        Edit Character
     </button>
   </article>
 } @empty {
-  <p>You have not added any paths yet.</p>
+  <p>You have not added any characters yet.</p>
 }

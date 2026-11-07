@@ -1,4 +1,4 @@
-<h2>{{ isEditMode() ? 'Edit Path' : 'Add Path' }}</h2>
+<h2>{{ isEditMode() ? 'Edit Character' : 'Add Character' }}</h2>
 <form action="" [formGroup]="pathForm" class="path-form" (ngSubmit)="onSubmit()">
     <label>Name</label>
     <input type="text" formControlName="name">
@@ -19,6 +19,6 @@
     }
 
     <button type="submit" [disabled]="pathForm.invalid">
-        {{ isEditMode() ? 'Save Changes' : 'Add Path' }}
+        {{ isEditMode() ? 'Save Changes' : 'Add Character' }}
   </button>
 </form>
