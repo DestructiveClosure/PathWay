@@ -1,5 +1,5 @@
-
-@for(path of pathServ.favouriteList(); track path.id; let idx = $index, even = $even){
+<!-- 
+@for(path of pathServ.favouriteList(); track path._id; let idx = $index, even = $even){
     <app-path-card
         [path]="path"
         [index]="idx" 
@@ -10,4 +10,4 @@
 }@empty{
     <p class="error">No favourites yet</p>
     <button class="btn-error" routerLink="/paths">Go back</button>
-}
+} -->

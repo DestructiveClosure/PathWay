@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
 export class PathCard {
     protected config = inject(PATH_CONFIG);
 
-    protected city = this.config.defaultCity;
+  
     // Inputs
     path = input.required<Path>();
     isFavourite = input(false);
@@ -32,10 +32,10 @@ export class PathCard {
       this.selected.emit(this.path());
     }
 
-    protected toggleFavourite(event: MouseEvent): void {
-      event.stopPropagation();
-      this.favouriteToggled.emit(this.path().id);
-    }
+    // protected toggleFavourite(event: MouseEvent): void {
+    //   event.stopPropagation();
+    //   this.favouriteToggled.emit(this.path().id);
+    // }
 
     protected hideStats(event: MouseEvent): void{
       event.stopPropagation();

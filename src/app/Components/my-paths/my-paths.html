@@ -1,0 +1,31 @@
+<h2>My Paths</h2>
+
+@for (p of pathServ.pathList(); track p._id) {
+  <article class="path-card">
+    <h3>{{ p.name }}</h3>
+    <dl>
+        
+        @if(p.description){
+                <dt>{{p.description}}</dt>
+        }@else{
+            <dt>No description provided</dt>
+        }
+        
+    </dl>
+    <button
+    id="remove-path"
+    (click)="pathServ.removePath(p._id)"
+    >
+        Remove Path
+    </button>
+    <button
+        id="view-details"
+        (click)="$event.stopPropagation()"
+        [routerLink]="['/edit', p._id]"
+    >
+        Edit Path
+    </button>
+  </article>
+} @empty {
+  <p>You have not added any paths yet.</p>
+}

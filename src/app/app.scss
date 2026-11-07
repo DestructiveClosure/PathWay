@@ -7,6 +7,46 @@
     font-family: "Montserrat";
 }
 
+h1{
+  margin-top: 2rem;
+}
+
+.error-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: #b42318;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.error-banner > button {
+  width: auto;
+  margin: 0;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #587a2b;
+  border-radius: 3px;
+  background: #587a2b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dual-ring {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 6px solid #3f5a1c;
+  border-color: #3f5a1c transparent;
+  animation: infiniteSpin 1.2s linear infinite;
+}
+
 .container {
   max-width: 1024px;
   margin: 2rem auto;
@@ -90,4 +130,9 @@
     display: flex;
     flex-direction: column;
   }
+}
+
+@keyframes infiniteSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

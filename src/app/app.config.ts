@@ -1,7 +1,10 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 import { PATH_CONFIG } from './Shared/path-config';
+import { loadingInterceptor } from './Interceptors/loading-interceptor';
+import { errorInterceptor } from './Interceptors/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -10,9 +13,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: PATH_CONFIG,
       useValue: {
-        apiBaseUrl: "https://api.openpathdb.com", defaultCity: "Windsor"
+        apiBaseUrl: "https://starwars-databank-server.onrender.com/api/v1"
       }
-    }
+    },
+    provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor]))
   ],
+  
   
 };

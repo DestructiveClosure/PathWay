@@ -1,6 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { PathService } from './Services/path-service';
+import { LoadingService } from './Services/loading-service';
+import { ErrorService } from './Services/error-service';
 
 @Component({
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
@@ -9,8 +11,10 @@ import { PathService } from './Services/path-service';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('PathWay');
+  protected readonly title = signal('Paths');
   protected pathServ = inject(PathService);
+  protected loading = inject(LoadingService);
+  protected errorServ = inject(ErrorService);
 
   protected guard = this.pathServ.guardEnabled;
 

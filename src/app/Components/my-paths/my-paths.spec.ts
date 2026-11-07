@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PathByType } from './path-by-type';
+import { MyPaths } from './my-paths';
 
-describe('PathByType', () => {
-  let component: PathByType;
-  let fixture: ComponentFixture<PathByType>;
+describe('MyPaths', () => {
+  let component: MyPaths;
+  let fixture: ComponentFixture<MyPaths>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PathByType],
+      imports: [MyPaths],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PathByType);
+    fixture = TestBed.createComponent(MyPaths);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -30,11 +30,8 @@ export class PathForm {
 
   protected pathForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    region: ['', [Validators.required]],
     description: ['', createDescriptionValidator()],
-    difficulty: [''],
-    surface: [''],
-    dogFriendly: [true],
+    image: [''],
   },
   { 
     validators: descriptionDiffersFromName() 
@@ -46,18 +43,20 @@ export class PathForm {
     console.log(`Guard: ${this.isEditMode()}`)
 
     effect(() => {
+
       const id = this.id();
+
       if(id === undefined){
         return;
       }
 
-      const path = this.pathServ.getPath(Number(id));
+      const path = this.pathServ.getPath(id);
 
       if(path){
         // PatchValue() fills only the field it is given. The form has no id field,
         // so the id is ignfored here and added back on submit.
         this.pathForm.patchValue(
-          {...path, dogFriendly: path.dogFriendly ?? false}
+          {...path}
         );
       }
     })
@@ -71,18 +70,20 @@ export class PathForm {
     }
   
     const formValue = this.pathForm.getRawValue();
-    const id = this.isEditMode() ? Number(this.id()) : this.pathServ.nextId();
+    const id = this.id();
 
-    if(this.isEditMode()){
-      this.pathServ.updatePath({id, ...formValue})
+    if(id !== undefined){
+      this.pathServ.updatePath({
+          _id: id,
+          ...formValue
+      });
     }else{
-      this.pathServ.addPath({id, ...formValue});
+      this.pathServ.addPath(formValue as Path);
     }
     
     
     this.pathForm.reset();
-    this.router.navigate(['/paths', id])
-    
+    this.router.navigate(['/my-paths'])
   }
 
 }

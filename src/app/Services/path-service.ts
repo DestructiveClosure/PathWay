@@ -1,110 +1,88 @@
 import { computed, inject, Service, signal } from '@angular/core';
 import { Path } from '../Shared/Models/path';
-import { PATH_CONFIG } from '../Shared/path-config';
+
 
 @Service()
 export class PathService {
-
-    // Inject config file into service
-    private config = inject(PATH_CONFIG);
-
-    readonly defaultCity = this.config.defaultCity;
+    
 
     public guardEnabled = signal<boolean>(true);
 
-    private paths = signal<Path[]>([
+    public paths = signal<Path[]>([
         {
-            id: 1,
+            _id: "local-1",
             name: "Little River Corridor",
-            region: "Tecumseh",
-            difficulty: 'easy',
-            surface: 'paved',
-            dogFriendly: true,
             description: "A quiet but rigid trail in Tecumseh Ontario"
         },
         {
-            id: 2,
+            _id: "local-2",
             name: "Lakewood Park Trail",
-            region: "Tecumseh",
-            difficulty: 'easy',
-            surface: 'paved',
-            dogFriendly: true,
         },
         {
-            id: 3,
+            _id: "local-3",
             name: "Ruscom Shores Trail",
-            region: "Windsor",
-            difficulty: 'easy',
-            surface: 'gravel',
-            dogFriendly: true,
             description: "A relaxed shoreline trail with open views of Lake St. Clair"
         },
         {
-            id: 4,
+            _id: "local-4",
             name: "Greenway Trail",
-            region: "Windsor",
-            difficulty: 'moderate',
-            surface: 'dirt',
-            dogFriendly: true,
             description: "A multi-use path connecting parks and neighbourhoods"
         },
         {
-            id: 5,
+            _id: "local-5",
             name: "Devonshire",
-            region: "LaSalle",
-            difficulty: 'moderate',
-            surface: 'dirt',
-            dogFriendly: false,
             description: "An accessible path connecting football fields"
         },
     ]);
-
-    ;
+    
 
     pathList = this.paths.asReadonly();
     pathCount = computed(() => this.paths().length);
 
     private favouriteIds = signal<readonly number[]>([]);
     favouriteCount = computed(() => this.favouriteIds().length);
-    favouriteList = computed(() => this.paths().filter((f) => this.favouriteIds().includes(f.id)));
+    // favouriteList = computed(() => this.paths().filter((f) => this.favouriteIds().includes(f._id)));
+
     
+
+
     addPath(p: Path): void {
         this.paths.update((list) => [...list, p]);
     }
 
-    toggleFavourite(id: number): void{
-        this.favouriteIds.update((ids) => 
-            ids.includes(id) ? ids.filter((existing) => existing !== id) : [...ids, id],
-        )
-    }
+    // toggleFavourite(id: number): void{
+    //     this.favouriteIds.update((ids) => 
+    //         ids.includes(id) ? ids.filter((existing) => existing !== id) : [...ids, id],
+    //     )
+    // }
     // map() builds a new array, so the signal sees a new reference and notifies its readers.
     updatePath(updated: Path): void {
-        this.paths.update((list) => list.map((p) => (p.id === updated.id ? updated : p)));
+        this.paths.update((list) => list.map((p) => (p._id === updated._id ? updated : p)));
     }
 
     
 
     // Used by the form when editing, Same lookup as getById, named for that purpose.
-    getPath(id: number): Path | undefined {
+    getPath(id: string): Path | undefined {
         return this.getById(id);
     }
 
     // There is no server to hand out ids yet, so a new path gets one more than the largest id.
-    nextId(): number {
-        return Math.max(0, ...this.paths().map((p) => p.id)) + 1;
+    // nextId(): number {
+    //     return Math.max(0, ...this.paths().map((p) => p.id)) + 1;
+    // }
+
+    // isFavourite(id:string): boolean{
+    //     return this.favouriteIds().includes(id);
+    // }
+
+    getById(id: string): Path | undefined {
+        return this.paths().find((path) => path._id === id);
     }
 
-    isFavourite(id:number): boolean{
-        return this.favouriteIds().includes(id);
-    }
-
-    getById(id: number): Path | undefined {
-        return this.paths().find((path) => path.id === id);
-    }
-
-    removePath(id: number): void{
+    removePath(id: string): void{
         console.log(`Hello from the RemoveMethod\nThe Path ID: ${id}`)
-        this.paths.update(path => path.filter(i => i.id !== id));
+        this.paths.update(path => path.filter(i => i._id !== id));
     }
 
     toggleGuard(): void{

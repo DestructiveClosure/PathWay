@@ -4,7 +4,7 @@ import { PathCard } from '../path-card/path-card';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [PathCard, RouterLink],
+  imports: [ RouterLink],
   selector: 'app-favourites',
   styleUrl: './favourites.scss',
   templateUrl: './favourites.html',

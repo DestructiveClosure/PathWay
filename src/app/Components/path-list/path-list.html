@@ -1,5 +1,5 @@
 <div class="path-wrapper">
-    @for (path of pathList(); track path.id; let idx = $index, even = $even){
+    <!-- @for (path of pathList(); track path.id; let idx = $index, even = $even){
         <app-path-card
         [index]="idx" 
         [even]="even" 
@@ -11,5 +11,27 @@
         />
     }@empty{
         <div>No trails match</div>
+    } -->
+
+    @if (pathList.isLoading()) {
+        <p>Loading Paths...</p>
+    } @else if (pathList.error()) {
+        <p>ERROR</p>
+    } @else {
+    @for (path of pathList.value().data; track path._id;  let idx = $index, even = $even) {
+        <app-path-card
+        [index]="idx" 
+        [even]="even" 
+        (selected)="onPathOpen($event)" 
+        
+        [path]="path"
+        (remove)="onPathRemove($event)"
+        />
+    } @empty {
+        <p>No Paths found.</p>
     }
+    }
+    
 </div>
+
+

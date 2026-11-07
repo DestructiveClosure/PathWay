@@ -1,14 +1,17 @@
-@if (path(); as p) {
+@if (path.isLoading()) {
+  <p>Loading brewery...</p>
+} @else if (path.error()) {
+  <!-- This is not the 404 page. The URL matched a route, breweries/:id,
+       but the API could not return a brewery for that id. -->
+  <p class="error">Could not load brewery {{ id() }}.</p>
+  <button type="button" (click)="path.reload()">Try again</button>
+  <a routerLink="/breweries">Back to all breweries</a>
+} @else if (path.hasValue()) {
+  @let p = path.value();
   <article class="detail">
-    <h2>{{p.name}}</h2>
-    <p>Region: {{p.region}}</p>
-    <button type="button" class="favourite-button" (click)="pathServ.toggleFavourite(p.id)">
-      {{ pathServ.isFavourite(p.id) ? '★ Remove from favourites' : '☆ Add to favourites' }}
-    </button>
-    <button class="remove-button" (click)="onDelete(p.id)">Remove</button>
-    <button class="edit-button" [routerLink]="['/edit', p.id]">Edit</button>
+    <h2>{{ p.name }}</h2>
+    <p>{{p.description}}</p>
   </article>
-  <a routerLink="/paths">Back to all paths</a>
-} @else {
-  
+
+  <a routerLink="/paths">Back to all Paths</a>
 }

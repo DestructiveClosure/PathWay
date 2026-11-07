@@ -7,17 +7,6 @@
         <p class="error">Must be at least 2 characters.</p>
     }
 
-    <label>Region</label>
-    <select class="surface-sl" formControlName="region">
-      <option value="LaSalle">LaSalle</option>
-      <option value="Windsor">Windsor</option>
-      <option value="Tecumseh">Tecumseh</option>
-    </select>
-    <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
-    @if (pathForm.controls.region.touched && pathForm.controls.region.invalid) {
-        <p class="error">Region required</p>
-    }
-
     <label>Description</label>
     <textarea type="text" formControlName="description"></textarea>
     <!-- Using hasError to use descriptionRequired argument to check if validation is working -->
@@ -25,25 +14,9 @@
         <p class="error">Description can't start with `description`</p>
     }
     
-    
     @if (pathForm.hasError('descriptionMatches')) {
         <p class="error">Description shouldn't match name.</p>
     }
-    <label>
-        Surface
-    </label>
-    <select class="surface-sl" formControlName="surface">
-      <option value="gravel">Gravel</option>
-      <option value="paved">Paved</option>
-      <option value="dirt">Dirt</option>
-      <option value="rock">Rock</option>
-    </select>
-    
-
-    <label class="checkbox">
-        <input type="checkbox" formControlName="dogFriendly" />
-        Dog Friendly?
-    </label>
 
     <button type="submit" [disabled]="pathForm.invalid">
         {{ isEditMode() ? 'Save Changes' : 'Add Path' }}

@@ -1,47 +1,23 @@
 <section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
     <h3>{{path().name}}</h3>    
     @if(expanded){
-        <span>Path #{{index() + 1}}</span>
+        <span>Character #{{index() + 1}}</span>
         <dl>
-           <aside class="location-container">
-                <dt>{{path().region}}</dt>
-           </aside>
-            @switch(path().difficulty){
-                @case ('easy'){
-                    <dt class="easy">
-                        Easy
-                    </dt>
-                }                 
-                @case ('moderate'){
-                    <dt class="mod">
-                        Moderate
-                    </dt>
-                }           
-                @case ('hard'){
-                    <dt class="hard">
-                        Hard
-                    </dt>
-                }           
-            }
             @if(path().description){
-                    <dt>{{path().description}}</dt>
+                    <dt>{{
+                        path().description}}</dt>
             }@else{
                 <dt>No description provided</dt>
             }
-            @if(path().dogFriendly){
-                <dt>Dog Friendly: 🐶</dt>
-            }@else{
-                <dt>Dog Friendly: ❌</dt>
-            }
         </dl>
     }
-    <button
+    <!-- <button
     type="button"
     id="svgelem"
     (click)="toggleFavourite($event)"
     >
         <span id="star">{{isFavourite() ? '★' : '☆'}}</span>
-    </button>
+    </button> -->
     <button
     id="hide-stats"
     (click)="hideStats($event)">Hide Stats</button>
@@ -54,7 +30,7 @@
     <button
         id="view-details"
         (click)="$event.stopPropagation()"
-        [routerLink]="['/paths', path().id]"
+        [routerLink]="['/paths', path()._id]"
     >
         View Details
     </button>
