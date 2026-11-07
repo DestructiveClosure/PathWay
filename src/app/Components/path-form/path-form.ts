@@ -43,7 +43,7 @@ export class PathForm {
   constructor(){
     // An effect reruns id() changes, so going from edit/1 to edit/2
     // refills the form even though angular reusees the same component
-    console.log(`Guard: ${this.isEditMode}`)
+    console.log(`Guard: ${this.isEditMode()}`)
 
     effect(() => {
       const id = this.id();
@@ -64,7 +64,7 @@ export class PathForm {
   }
 
 
-  // FINISHED: Part 2 & 3: Add & Edit
+
   protected onSubmit(): void{
     if(this.pathForm.invalid){
       return;

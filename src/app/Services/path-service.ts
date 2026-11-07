@@ -54,7 +54,7 @@ export class PathService {
             region: "LaSalle",
             difficulty: 'moderate',
             surface: 'dirt',
-            dogFriendly: true,
+            dogFriendly: false,
             description: "An accessible path connecting football fields"
         },
     ]);
@@ -89,9 +89,9 @@ export class PathService {
         return this.getById(id);
     }
 
-    // There is no server to hand out ids yet, so a new brewery gets one more than the largest id.
+    // There is no server to hand out ids yet, so a new path gets one more than the largest id.
     nextId(): number {
-        return Math.max(0, ...this.paths().map((b) => b.id)) + 1;
+        return Math.max(0, ...this.paths().map((p) => p.id)) + 1;
     }
 
     isFavourite(id:number): boolean{
