@@ -70,6 +70,10 @@ export class PathForm {
       if(!this.path.hasValue()) return undefined;
 
       const path = this.path.value();
+
+     
+
+      
       
       
       
@@ -101,7 +105,7 @@ export class PathForm {
           ...formValue
       });
     }else{
-      this.pathServ.addPath(formValue as Path);
+      this.pathServ.addPath(formValue);
     }
     
     this.pathForm.reset();

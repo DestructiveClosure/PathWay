@@ -47,8 +47,17 @@ export class PathService {
     
 
 
-    addPath(p: Path): void {
-        this.paths.update((list) => [...list, p]);
+    // addPath(p: Path): void {
+    //     this.paths.update((list) => [...list, p]);
+    // }
+
+    addPath(data: Omit<Path, '_id'>): void {
+        const newPath: Path = {
+            ...data,
+            _id: crypto.randomUUID(),
+        };
+
+        this.paths.update(list => [...list, newPath]);
     }
 
     // toggleFavourite(id: number): void{
