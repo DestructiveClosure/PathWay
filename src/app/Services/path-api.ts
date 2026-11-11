@@ -2,10 +2,10 @@ import { effect, inject, Service, Signal, signal } from '@angular/core';
 import { PATH_CONFIG } from '../Shared/path-config';
 import { Path } from '../Shared/Models/path';
 import { PathService } from './path-service';
-import { HttpClient, httpResource } from '@angular/common/http';
+import { httpResource } from '@angular/common/http';
 import { ErrorService } from './error-service';
-
-interface PathsResponse {
+// Interface for the response of the Characters
+interface CharacterResponse {
     data: Path[]
 }
 
@@ -16,18 +16,22 @@ export class PathApi {
     private config = inject(PATH_CONFIG);
     private errorServ = inject(ErrorService);
     // Inject HTTP Client to fetch Star Wars characters
+    // FINISHED: PART 3 - Load API Data
     protected url = `${this.config.apiBaseUrl}/characters`
 
-    paths = httpResource<PathsResponse>(
+    constructor(){
+        effect(() => {
+            // Setting characters to the new characters from the response data when value changes / Remove locally
+            const res = this.paths.value();
+            this.pathServ.setCharacters(res.data);
+        })
+    }
+
+    paths = httpResource<CharacterResponse>(
         () => `${this.url}`,
         {defaultValue: {data: []}}
     )
-    
-    private watchPathsError = effect(() => {
-        if (this.paths.error()) {
-            this.errorServ.setError('Could not load paths.');
-        }
-    });
+
     
     
     // HTTPResource
@@ -37,7 +41,7 @@ export class PathApi {
     }
 
     byIds(ids: Signal<string[]>) {
-        return httpResource<PathsResponse>(
+        return httpResource<CharacterResponse>(
             () => ids().length
             ? { url: this.url, params: { by_ids: ids().join(',') } }
             : undefined,

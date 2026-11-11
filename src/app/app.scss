@@ -31,9 +31,9 @@ h1{
   width: auto;
   margin: 0;
   padding: 0.5rem 0.8rem;
-  border: 1px solid #587a2b;
+  border: 1px solid rgb(16, 127, 131);
   border-radius: 3px;
-  background: #587a2b;
+  background: rgb(16, 127, 131);
   color: #fff;
   cursor: pointer;
 }
@@ -42,8 +42,8 @@ h1{
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 6px solid #3f5a1c;
-  border-color: #3f5a1c transparent;
+  border: 6px solid rgb(16, 127, 131);
+  border-color: rgb(16, 127, 131) transparent;
   animation: infiniteSpin 1.2s linear infinite;
 }
 
@@ -87,7 +87,7 @@ h1{
     
     font-weight: 600;
     color: #fff;
-    background-color: #3f5a1c;
+    background-color: #05696d;
     text-decoration: none;
     border: 2px solid transparent;
     cursor: pointer;
@@ -111,12 +111,12 @@ h1{
       border: 2px solid transparent;
 
       &:hover {
-        border-color: #3f5a1c;
+        border-color: #05696d;
       }
 
       &.active {
-        background-color: #152205d8;
-        color: #8dc740;
+        background-color: #033c3d;
+        color: #fdfdf8;
       }
     }
   }
@@ -125,6 +125,7 @@ h1{
 .active{
   background-color: orange;
 }
+
 @media (min-width: 650px) {
   .nav-bar{
     display: flex;

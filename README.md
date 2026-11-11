@@ -2,13 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
 
+<!-- FINISHED: PART 1 -->
 ## API Usage
 
-This app uses the STAPI API.
+This app uses the STAR WARS DATABANK.
 
-Documentation: https://stapi.co/documentation
+Docs: https://starwars-databank.vercel.app/
 
-Example request URL: `https://stapi.co/api/v1/rest/season/search`
+Example request: `https://starwars-databank-server.onrender.com/api/v1`
 
 ## HTTPResource Usage
 

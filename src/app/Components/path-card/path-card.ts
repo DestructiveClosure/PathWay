@@ -3,6 +3,7 @@ import { Path } from '../../Shared/Models/path';
 import { PathService } from '../../Services/path-service';
 import { PATH_CONFIG } from '../../Shared/path-config';
 import { RouterLink } from '@angular/router';
+import { ErrorService } from '../../Services/error-service';
 
 
 @Component({
@@ -14,7 +15,6 @@ import { RouterLink } from '@angular/router';
 export class PathCard {
     protected config = inject(PATH_CONFIG);
 
-  
     // Inputs
     path = input.required<Path>();
     isFavourite = input(false);

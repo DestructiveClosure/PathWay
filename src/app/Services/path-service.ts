@@ -11,28 +11,29 @@ export class PathService {
     public paths = signal<Path[]>([
         {
             _id: "local-1",
-            name: "Little River Corridor",
-            description: "A quiet but rigid trail in Tecumseh Ontario"
+            name: "Luke Skywalker",
+            description: "A Jedi hero who helps lead the Rebel Alliance"
         },
         {
             _id: "local-2",
-            name: "Lakewood Park Trail",
+            name: "Leia Organa",
+            description: "A leader of the Rebel Alliance and skilled diplomat"
         },
         {
             _id: "local-3",
-            name: "Ruscom Shores Trail",
-            description: "A relaxed shoreline trail with open views of Lake St. Clair"
+            name: "Han Solo",
+            description: "A daring smuggler and pilot of the Millennium Falcon"
         },
         {
             _id: "local-4",
-            name: "Greenway Trail",
-            description: "A multi-use path connecting parks and neighbourhoods"
+            name: "Darth Vader",
+            description: "A powerful Sith Lord and former Jedi"
         },
         {
             _id: "local-5",
-            name: "Devonshire",
-            description: "An accessible path connecting football fields"
-        },
+            name: "Yoda",
+            description: "A wise and powerful Jedi Master"
+        }
     ]);
     
 
@@ -87,5 +88,11 @@ export class PathService {
 
     toggleGuard(): void{
        this.guardEnabled.update(enabled => !enabled);
+    }
+
+    // Copies list of fetched data
+
+    setCharacters(paths: Path[]): void{
+        this.paths.set(paths);
     }
 }

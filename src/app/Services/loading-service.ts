@@ -2,6 +2,7 @@ import { computed, Service, signal } from '@angular/core';
 
 @Service()
 export class LoadingService {
+    // FINISHED: PART 5
     private requestCount = signal(0);
 
     isLoading = computed(() => this.requestCount() > 0);

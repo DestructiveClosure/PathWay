@@ -14,4 +14,3 @@ export function descriptionDiffersFromName(): ValidatorFn {
 
   };
 }
-/* FREE TRAILS API https://trailsplits.com/api/reference */

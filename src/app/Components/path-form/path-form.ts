@@ -1,10 +1,11 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, Signal, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
 import { Path } from '../../Shared/Models/path';
 import { createDescriptionValidator } from '../../Services/createValidator';
 import { descriptionDiffersFromName } from '../../Services/descriptionValidator';
+import { PathApi } from '../../Services/path-api';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -16,13 +17,24 @@ export class PathForm {
   private fb = inject(FormBuilder);
   private pathServ = inject(PathService);
   private router = inject(Router);
+  private api = inject(PathApi);
+
+  
+  
+  
 
   // Computing the isEditMode to check if the current id is equal not equal to undefined
   protected isEditMode = computed(() => this.id() !== undefined);
+
+  
  
   // Filled from :id route parameter on /edit/:id by withComponentInputBinding
 
   id = input<string>();
+
+  protected path = this.api.byId(this.id as Signal<string>);
+
+  
 
   // nonNullable means reset() goes back to these 
   // starting values instead of null,
@@ -45,12 +57,22 @@ export class PathForm {
     effect(() => {
 
       const id = this.id();
+      
 
       if(id === undefined){
         return;
       }
+      
+      // let path = this.pathServ.getPath(id);
 
-      const path = this.pathServ.getPath(id);
+      // let path: Path | undefined = this.api.byId(this.id);
+
+      if(!this.path.hasValue()) return undefined;
+
+      const path = this.path.value();
+      
+      
+      
 
       if(path){
         // PatchValue() fills only the field it is given. The form has no id field,
@@ -70,6 +92,7 @@ export class PathForm {
     }
   
     const formValue = this.pathForm.getRawValue();
+    
     const id = this.id();
 
     if(id !== undefined){
@@ -80,7 +103,6 @@ export class PathForm {
     }else{
       this.pathServ.addPath(formValue as Path);
     }
-    
     
     this.pathForm.reset();
     this.router.navigate(['/my-paths'])

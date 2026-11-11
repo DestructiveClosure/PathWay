@@ -1,17 +1,17 @@
-import { Service, signal } from '@angular/core';
+import { Injectable, Service, signal } from '@angular/core';
 
 @Service()
 export class ErrorService {
-    private _errorMessage = signal<string | null>(null);
+    // FINISHED: Going Further
+    private errMessage = signal<string | null>(null);
 
-    errorMessage = this._errorMessage.asReadonly();
+    errorMessage = this.errMessage.asReadonly();
 
     setError(message: string){
-        this._errorMessage.set(message);
+        this.errMessage.set(message);
     }
 
     clear(): void{
-        
-        this._errorMessage.set(null);
+        this.errMessage.set(null);
     }
 }

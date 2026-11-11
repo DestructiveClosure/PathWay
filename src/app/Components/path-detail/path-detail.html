@@ -1,16 +1,24 @@
 @if (path.isLoading()) {
-  <p>Loading brewery...</p>
+  <p>Loading paths...</p>
 } @else if (path.error()) {
-  <!-- This is not the 404 page. The URL matched a route, breweries/:id,
-       but the API could not return a brewery for that id. -->
+  <!-- This is not the 404 page. The URL matched a route, path/:id,
+       but the API could not return a path for that id. -->
   <p class="error">Could not load Character {{ id() }}.</p>
-  <button type="button" (click)="path.reload()">Try again</button>
-  <a routerLink="/paths">Back to all characters</a>
+  <div id="actions">
+    <button type="button" (click)="path.reload()">Try again</button>
+    <a routerLink="/paths">Back to all characters</a>
+  </div>
 } @else if (path.hasValue()) {
+  <!-- https://angular.dev/api/core/@let -->
   @let p = path.value();
   <article class="detail">
     <h2>{{ p.name }}</h2>
     <p>{{p.description}}</p>
+    <p class="local-banner">Changes are saved to this device only</p>
+    <button
+    (click)="$event.stopPropagation()"
+    [routerLink]="['/edit', p._id]"
+    id="edit-btn">Edit</button>
   </article>
 
   <a routerLink="/paths">Back to all characters</a>

@@ -1,22 +1,28 @@
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
-import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { ErrorService } from '../Services/error-service';
+import { inject } from '@angular/core';
+
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
-  
+  // FINISHED: Going Further: ErrorInterceptor
+  const errorServ = inject(ErrorService);
+
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
+      let message: string;
 
       if (error.status === 0) {
-        console.log('Network failure. Redirecting...');
+        message = 'Network failure.';
       } else if (error.status === 404) {
-        console.log('Resource not found:', error.url);
+        message = 'Resource not found';
       } else {
-        console.log(`Unexpected error`);
+        message = 'An unexpected error occurred';
       }
-      
-      return throwError(() => new Error('An error occurred. Please try again.'));
+
+      errorServ.setError(message);
+
+      return throwError(() => new Error(message));
     })
   );
 };
