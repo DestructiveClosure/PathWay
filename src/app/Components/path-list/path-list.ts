@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, OnInit, output, signal } from '@angular/core';
 import { Path } from '../../Shared/Models/path';
 import { PathCard } from '../path-card/path-card';
 import { PathService } from '../../Services/path-service';
@@ -12,7 +12,7 @@ import { PathApi } from '../../Services/path-api';
   styleUrl: './path-list.scss',
   templateUrl: './path-list.html',
 })
-export class PathList {
+export class PathList implements OnInit {
 
   protected pathServ = inject(PathService);
   protected pathCount = this.pathServ.pathCount;
@@ -20,11 +20,10 @@ export class PathList {
   private api = inject(PathApi);
 
   protected pathList = this.api.paths;
-
-  constructor(){
-    console.log(`PathCount: `, this.pathCount())
+  
+  ngOnInit(): void {
+    console.log(`Characters: ${this.pathList}`)
   }
-
   protected favourites = signal<number[]>([]);
 
   protected onPathOpen(path: Path): void{

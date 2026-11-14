@@ -4,10 +4,11 @@ import { PathService } from '../../Services/path-service';
 import { PATH_CONFIG } from '../../Shared/path-config';
 import { RouterLink } from '@angular/router';
 import { ErrorService } from '../../Services/error-service';
+import { CurrencyPipe, DecimalPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, DecimalPipe, TitleCasePipe, SlicePipe, UpperCasePipe],
   selector: 'app-path-card',
   styleUrl: './path-card.scss',
   templateUrl: './path-card.html',

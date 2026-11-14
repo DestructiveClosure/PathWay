@@ -15,7 +15,7 @@
 
   h3 {
     color: #05696d;
-    font-size: 1.375rem;
+    font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.25;
     text-align: center;
@@ -155,6 +155,17 @@
       background: #055b5e;
     }
   }
-
+  #id-wrapper{
+    margin: 15px 0;
+    #char-id{
+      background-color: rgb(15, 49, 68);
+      border-radius: 3px;
+      font-size: 11px;
+      width: fit-content;
+      padding: 10px 12px;
+      height: 20px;
+      color: #fff;
+   }
+  }
   
 }

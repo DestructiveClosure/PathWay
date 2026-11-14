@@ -1,14 +1,18 @@
 <section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
-    <h3>{{path().name}}</h3>    
+    
+    <h3>{{path().name | titlecase }}</h3>    
+    <img src="{{path().image}}" width="200"/>
     @if(expanded){
-        <span>Star Wars <br/>Character #{{index() + 1}}</span>
+        
         <dl>
             @if(path().description){
-                    <dt>{{
-                        path().description}}</dt>
+                    <dt>{{ path().description | slice:0:100 }}...</dt>
             }@else{
                 <dt>No description provided</dt>
             }
+            <div id="id-wrapper">
+                <span id="char-id">ID: {{path()._id | uppercase}}</span>
+            </div>
         </dl>
     }
     <!-- <button
