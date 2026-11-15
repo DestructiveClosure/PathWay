@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, Signal, signal } from '@angular/core';
+import { afterNextRender, Component, computed, effect, ElementRef, inject, input, Signal, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class PathForm {
 
   
   
-  
+  private firstField = viewChild<ElementRef<HTMLInputElement>>('firstField');
 
   // Computing the isEditMode to check if the current id is equal not equal to undefined
   protected isEditMode = computed(() => this.id() !== undefined);
@@ -53,6 +53,13 @@ export class PathForm {
     // An effect reruns id() changes, so going from edit/1 to edit/2
     // refills the form even though angular reusees the same component
     console.log(`Guard: ${this.isEditMode()}`)
+
+    // FINISHED: Going Further:
+    // Focusing needs the real DOM element, whcih doesn't exist on ngOnInit (the view hasn't rendered yet)
+    afterNextRender(() => {
+      this.firstField()?.nativeElement.focus();
+    });
+
 
     effect(() => {
 

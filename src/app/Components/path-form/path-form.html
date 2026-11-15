@@ -1,7 +1,7 @@
 <h2>{{ isEditMode() ? 'Edit Character' : 'Add Character' }}</h2>
 <form action="" [formGroup]="pathForm" class="path-form" (ngSubmit)="onSubmit()">
     <label>Name</label>
-    <input type="text" formControlName="name">
+    <input #firstField type="text" formControlName="name">
     <!-- touched waits until the user leaves the field, so the message does not appear while they are still typing. -->
     @if (pathForm.controls.name.touched && pathForm.controls.name.invalid) {
         <p class="error">Must be at least 2 characters.</p>
