@@ -1,17 +1,17 @@
 <section class="path-card" [class.favourite]="isFavourite()" (click)="toggleCard()">
-    
-    <h3>{{path().name | titlecase }}</h3>    
+    <!-- Removed the "" Parentheses from the Title -->
+    <h3>{{path().name | titlecase | replaceText: '"' : ' ' }}</h3>    
     <img src="{{path().image}}" width="200"/>
     @if(expanded){
         
         <dl>
             @if(path().description){
-                    <dt>{{ path().description | slice:0:100 }}...</dt>
+                    <dt>{{ path().description  | slice:0:100 | trunc:200 }}</dt>
             }@else{
                 <dt>No description provided</dt>
             }
             <div id="id-wrapper">
-                <span id="char-id">ID: {{path()._id | uppercase}}</span>
+                <span id="char-id">ID: {{path()._id | uppercase | slice:0:12}}</span>
             </div>
         </dl>
     }

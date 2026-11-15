@@ -24,6 +24,8 @@ export class PathList implements OnInit {
   ngOnInit(): void {
     console.log(`Characters: ${this.pathList}`)
   }
+  
+  
   protected favourites = signal<number[]>([]);
 
   protected onPathOpen(path: Path): void{
