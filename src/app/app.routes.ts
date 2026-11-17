@@ -10,6 +10,7 @@ export const routes: Routes = [
         redirectTo: '/paths',
         pathMatch: 'full'
     },
+    /* Adding loadComponent / lazy loading added to router */
     {
         path: 'paths',
         loadComponent: () => import('./Components/path-list/path-list').then(m => m.PathList)

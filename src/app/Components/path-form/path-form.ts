@@ -54,7 +54,7 @@ export class PathForm {
     // refills the form even though angular reusees the same component
     console.log(`Guard: ${this.isEditMode()}`)
 
-    // FINISHED: Going Further:
+    // FINISHED: Last part
     // Focusing needs the real DOM element, whcih doesn't exist on ngOnInit (the view hasn't rendered yet)
     afterNextRender(() => {
       this.firstField()?.nativeElement.focus();

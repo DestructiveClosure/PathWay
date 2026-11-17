@@ -32,6 +32,9 @@ export class PathDetail implements OnInit, OnDestroy {
     // console.log('[lifecycle] path:', path);
     // console.log(`[lifecycle] opened: ${path?.name ?? 'Unknown'}`);
   }
+  /* 
+  FINISHED: Part 4 ngOnInit & ngOnDestroy
+   */
   ngOnInit(): void {
     this.opened = Date.now();
     const path = this.pathServ.getById(this.id());
