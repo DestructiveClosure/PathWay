@@ -12,7 +12,7 @@
         
         <dl>
             @if(path().description){
-                    <dt>{{ path().description  | trunc:200 }}</dt>
+                    <dt>{{ path().description  | defaultTxt: "No description available" | trunc: 150 }}</dt>
             }@else{
                 <dt>No description provided</dt>
             }

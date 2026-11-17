@@ -2,7 +2,6 @@ import { afterNextRender, Component, computed, effect, ElementRef, inject, input
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PathService } from '../../Services/path-service';
 import { Router } from '@angular/router';
-import { Path } from '../../Shared/Models/path';
 import { createDescriptionValidator } from '../../Services/createValidator';
 import { descriptionDiffersFromName } from '../../Services/descriptionValidator';
 import { PathApi } from '../../Services/path-api';
@@ -54,8 +53,8 @@ export class PathForm {
     // refills the form even though angular reusees the same component
     console.log(`Guard: ${this.isEditMode()}`)
 
-    // FINISHED: Last part
-    // Focusing needs the real DOM element, whcih doesn't exist on ngOnInit (the view hasn't rendered yet)
+    // FINISHED: 
+    // Focusing needs the real DOM element, which doesn't exist on ngOnInit because the view hasn't rendered.
     afterNextRender(() => {
       this.firstField()?.nativeElement.focus();
     });
@@ -64,12 +63,9 @@ export class PathForm {
     effect(() => {
 
       const id = this.id();
-      
-
       if(id === undefined){
         return;
       }
-      
       // let path = this.pathServ.getPath(id);
 
       // let path: Path | undefined = this.api.byId(this.id);
@@ -77,13 +73,6 @@ export class PathForm {
       if(!this.path.hasValue()) return undefined;
 
       const path = this.path.value();
-
-     
-
-      
-      
-      
-      
 
       if(path){
         // PatchValue() fills only the field it is given. The form has no id field,

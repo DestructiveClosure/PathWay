@@ -4,10 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'trunc',
 })
 export class DescPipe implements PipeTransform {
-   transform(value: string | null | undefined, top = 120): string {
+  // If the string is longer than the limit (120), it takes the first ceil characters
+  // removes any trailing whitespace from that cut, and adds an ellipsis
+   transform(value: string | null | undefined, ceil = 120): string {
     if (!value) return '';
-    return value.length > top
-      ? `${value.slice(0, top).trimEnd()}…`
+    return value.length > ceil
+      ? `${value.slice(0, ceil).trimEnd()}…`
       : value;
   }
 }

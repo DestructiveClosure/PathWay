@@ -4,7 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'replaceText',
 })
 export class TitlePipe implements PipeTransform {
-  transform(text: string, find: string, replacement: string): string {
-    return text?.split(find).join(replacement) ?? '';
+  // https://angular.dev/api/core/PipeTransform - Adding two arguments with a colon
+  transform(text: string, find: string, replace: string): string {
+    return text?.split(find).join(replace) ?? '';
   }
 }

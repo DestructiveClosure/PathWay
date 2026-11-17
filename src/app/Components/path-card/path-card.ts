@@ -7,10 +7,11 @@ import { ErrorService } from '../../Services/error-service';
 import { CurrencyPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { TitlePipe } from '../../Pipe/title-pipe';
 import { DescPipe } from '../../Pipe/desc-pipe';
+import { DefaultTextPipe } from '../../Pipe/default-text-pipe';
 
 
 @Component({
-  imports: [RouterLink, TitleCasePipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe],
+  imports: [RouterLink, TitleCasePipe, DefaultTextPipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe],
   selector: 'app-path-card',
   styleUrl: './path-card.scss',
   templateUrl: './path-card.html',
