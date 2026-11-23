@@ -47,5 +47,16 @@
     >
         View Details
     </button>
+    <!-- FINISHED: PART 1 -->
+    <!-- Copying path info and description with copyText directive -->
+    <button
+        type="button"
+        id="copy-path"
+        (click)="$event.stopPropagation()"
+        (appCopyTextCopied)="showCopiedNotice()"
+        [appCopyText]="'Character: ' + path().name + ' — ' + (path().description ?? 'No description available')"
+    >
+        {{ copied() ? 'Copied!' : 'Copy path info' }}
+    </button>
 
 </section>

@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { Path } from '../../Shared/Models/path';
 import { PathService } from '../../Services/path-service';
 import { PATH_CONFIG } from '../../Shared/path-config';
@@ -8,16 +8,19 @@ import { CurrencyPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/
 import { TitlePipe } from '../../Pipe/title-pipe';
 import { DescPipe } from '../../Pipe/desc-pipe';
 import { DefaultTextPipe } from '../../Pipe/default-text-pipe';
+import { CopyText } from '../../Directives/copy-text';
 
 
 @Component({
-  imports: [RouterLink, TitleCasePipe, DefaultTextPipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe],
+  imports: [RouterLink, TitleCasePipe, DefaultTextPipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe, CopyText],
   selector: 'app-path-card',
   styleUrl: './path-card.scss',
   templateUrl: './path-card.html',
 })
 export class PathCard {
     protected config = inject(PATH_CONFIG);
+
+    copied = signal(false);
 
     // Inputs
     path = input.required<Path>();
@@ -49,6 +52,10 @@ export class PathCard {
     removePath(event: MouseEvent): void{
       event.stopPropagation();
       this.remove.emit(this.path());
+    }
+    showCopiedNotice(): void {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
     }
     
 }
