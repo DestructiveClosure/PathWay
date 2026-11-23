@@ -8,6 +8,7 @@ import { Directive, input, output } from '@angular/core';
 })
 export class CopyText {
   appCopyText = input.required<string>();
+  
   appCopyTextCopied = output<void>();
 
   async copyText(): Promise<void> {

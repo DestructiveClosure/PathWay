@@ -9,6 +9,7 @@ import { TitlePipe } from '../../Pipe/title-pipe';
 import { DescPipe } from '../../Pipe/desc-pipe';
 import { DefaultTextPipe } from '../../Pipe/default-text-pipe';
 import { CopyText } from '../../Directives/copy-text';
+import { AppConfirm } from '../../Directives/app-confirm';
 
 
 @Component({
@@ -53,6 +54,7 @@ export class PathCard {
       event.stopPropagation();
       this.remove.emit(this.path());
     }
+    
     showCopiedNotice(): void {
       this.copied.set(true);
       setTimeout(() => this.copied.set(false), 2000);

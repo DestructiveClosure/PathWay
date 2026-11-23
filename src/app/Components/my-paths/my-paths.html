@@ -13,9 +13,18 @@
         }
         
     </dl>
-    <button
+    <!-- <button
     id="remove-path"
     (click)="pathServ.removePath(p._id)"
+    >
+        Remove Character
+    </button> -->
+    <!-- FINISHED: Part 2 - Wiring up the button -->
+    <button
+        type="button"
+        id="remove-path"
+        [appConfirm]="'Remove ' + p.name + '?'"
+        (confirmed)="pathServ.removePath(p._id)"
     >
         Remove Character
     </button>
