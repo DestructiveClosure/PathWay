@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { NotFound } from './Components/not-found/not-found';
-import { PathForm } from './Components/path-form/path-form';
 import { authGuard } from './Services/auth-guard';
 
 export const routes: Routes = [

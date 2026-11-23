@@ -2,16 +2,17 @@
     <!-- Removed the "" Parentheses from the Title -->
      <!-- 
     FINISHED: Part 1: Used 3 different built in pipes
-    FINISHED: Part 2: 
-    trunc takes the current string and trims it if the length is more than 120 characters while ending it with ...
+    FINISHED:  
+    Part 2: trunc takes the current string and trims it if the length is more than 120 characters while ending it with ...
     replaceText takes the quotation first argument and replaces it with the second
      -->
-    <h3>{{path().name | titlecase | replaceText: '"' : ' ' }}</h3>    
+    <h3>{{path().name | titlecase| replaceText: '"' : ' ' }}</h3>    
     <img src="{{path().image}}" width="200"/>
     @if(expanded){
         
         <dl>
             @if(path().description){
+                
                     <dt>{{ path().description  | defaultTxt: "No description available" | trunc: 150 }}</dt>
             }@else{
                 <dt>No description provided</dt>
