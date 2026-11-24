@@ -18,7 +18,7 @@ export class MyPaths implements OnInit {
   ngOnInit(): void {
     console.log(`API: `, this.api.paths);
   }
-  //  FINISHED: Part 2 - Emitting the output
+  //  FINISHED: Part 2 - Step 2 - * Emitting the output
 
   removePath(path: Path): void {
     this.pathServ.removePath(path._id);

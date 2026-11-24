@@ -10,10 +10,14 @@ import { DescPipe } from '../../Pipe/desc-pipe';
 import { DefaultTextPipe } from '../../Pipe/default-text-pipe';
 import { CopyText } from '../../Directives/copy-text';
 import { AppConfirm } from '../../Directives/app-confirm';
+import { HighlightTitle } from '../../Directives/highlight-title';
 
 
 @Component({
   imports: [RouterLink, TitleCasePipe, DefaultTextPipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe, CopyText],
+  hostDirectives: [{
+    directive: HighlightTitle
+  }],
   selector: 'app-path-card',
   styleUrl: './path-card.scss',
   templateUrl: './path-card.html',

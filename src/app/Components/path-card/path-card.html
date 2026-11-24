@@ -13,7 +13,7 @@
         <dl>
             @if(path().description){
                 
-                    <dt>{{ path().description  | defaultTxt: "No description available" | trunc: 150 }}</dt>
+                    <dt appHighlight>{{ path().description  | defaultTxt: "No description available" | trunc: 150 }}</dt>
             }@else{
                 <dt>No description provided</dt>
             }
@@ -55,7 +55,7 @@
         id="copy-path"
         (click)="$event.stopPropagation()"
         (appCopyTextCopied)="showCopiedNotice()"
-        [appCopyText]="'Character: ' + path().name + ' — ' + (path().description ?? 'No description available')"
+        [appCopyText]="'Character:\n\n' +  path().name + '\n' + '\n' + (path().description ?? 'No description available')"
     >
         {{ copied() ? 'Copied!' : 'Copy path info' }}
     </button>

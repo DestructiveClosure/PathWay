@@ -1,7 +1,8 @@
-import { Component, computed, effect, inject, input, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, effect, inject, input, OnDestroy, OnInit, signal } from '@angular/core';
 import { PathService } from '../../Services/path-service';
 import { Router, RouterLink } from '@angular/router';
 import { PathApi } from '../../Services/path-api';
+import { SavedServices } from '../../Services/saved-services';
 
 @Component({
   imports: [RouterLink],
@@ -15,6 +16,8 @@ export class PathDetail implements OnInit, OnDestroy {
   protected pathServ = inject(PathService);
   private router = inject(Router);
   private api = inject(PathApi);
+
+  private savedServ = inject(SavedServices);
 
   private start = Date.now();
   id = input.required<string>();
@@ -49,10 +52,18 @@ export class PathDetail implements OnInit, OnDestroy {
   }
   
 
- 
+  protected savedChar = signal<boolean>(false);
+
+  protected isSaved = computed(() =>
+    this.savedServ.isSaved(this.id())
+  );
 
 
-  
+  protected toggleSaved(): void {
+    this.savedServ.toggle(this.id());
+    console.log('Saved IDs:', this.savedServ.getSavedIds());
+    console.log('Current ID saved?', this.savedServ.isSaved(this.id()));
+  }
 
   protected onDelete(id: string): void {
     this.pathServ.removePath(id);

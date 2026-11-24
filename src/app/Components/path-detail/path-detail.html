@@ -20,6 +20,16 @@
     [routerLink]="['/edit', p._id]"
     id="edit-btn">Edit</button>
   </article>
+  <div class="button-actions">
 
-  <a routerLink="/paths">Back to all characters</a>
+    <button
+      type="button"
+      class="fav-btn" 
+      [class.saved]="isSaved()"
+      (click)="toggleSaved()">
+      {{ isSaved() ? '★ Saved' : '☆ Save' }}
+    </button>
+
+    <a routerLink="/paths">Back to all characters</a>
+  </div>
 }

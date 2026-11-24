@@ -1,3 +1,17 @@
+ /*
+    Component host elements
+    https://angular.dev/guide/components/host-elements#property-and-attribute-collisions
+    ViewEncapsulation.Emulated
+    https://angular.dev/guide/components/styling
+  */
+
+
+:host(.title-hovered) h3 {
+  border-bottom: 3px solid #d8e2c2;
+  border-right: 3px solid #d8e2c2;
+  transition: all 1.5s ease-in-out;
+}
+
 .path-card {
   position: relative;
   box-sizing: border-box;
@@ -15,7 +29,7 @@
 
   h3 {
     color: #05696d;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.25;
     text-align: center;

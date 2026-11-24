@@ -50,3 +50,8 @@ what the router does with a page when you leave it?:**
 ### Answer
 
 The ngOnDestroy ran only when I navigated from the page. It tells me that the router removes the component from the router-outlet, and angular will use ngOnDestroy for that task. This proves that the component lifecycle is directly tied to the router during activation and deactivation while working with the timer that was created.
+
+### LocalStorage persistance
+
+One thing that must never be stored in your localStorage in any private credentials, secret API keys or private API keys. A main reason a user of my application would use this service is to keep track of quick details about their favourite star wars characters between visits. Storing only the IDs keeps the saved data simple and easy to retrieve which characters that have been favourited or saved.
+

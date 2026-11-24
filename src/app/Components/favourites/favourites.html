@@ -11,3 +11,29 @@
     <p class="error">No favourites yet</p>
     <button class="btn-error" routerLink="/paths">Go back</button>
 } -->
+@if (paths.isLoading()) {
+  <p>Loading favourites...</p>
+} @else {
+        @for (path of favouritePaths(); track path._id; let idx = $index; let even = $even) {
+            <app-path-card
+                [path]="path"
+                [index]="idx"
+                [even]="even"
+                [isFavourite]="true"
+                (favouriteToggled)="toggleFavourite(path._id)">
+            </app-path-card>
+             <button
+                type="button"
+                class="fav-btn saved"
+                (click)="toggleFavourite(path._id)"
+                
+                >
+                ★ Remove from Saved
+            </button>
+        } @empty {
+            <p>No favourites yet</p>
+            <button class="btn-error" routerLink="/paths">Go back</button>
+        }
+}
+
+
