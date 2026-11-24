@@ -9,7 +9,7 @@ export class LoadingService {
 
     // Increasing count
     increase(): void{
-        this.requestCount.update(count => count + 1);
+        this.requestCount.update(count => count + 1)
     }
     // Decreasing count (prevents count from going below 0)
     decrease(): void{
