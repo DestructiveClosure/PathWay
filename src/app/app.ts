@@ -12,7 +12,7 @@ import { SavedServices } from './Services/saved-services';
   templateUrl: './app.html'
 })
 export class App {
-  protected readonly title = signal('Star Wars Characters');
+  protected readonly title = signal('DBZ Characters');
   protected pathServ = inject(PathService);
   protected loading = inject(LoadingService);
   protected errorServ = inject(ErrorService);

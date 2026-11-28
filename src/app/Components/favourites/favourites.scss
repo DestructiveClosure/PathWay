@@ -38,11 +38,17 @@
   border: 1px solid #05696d !important;
   border-radius: 0.5rem;
   background: #06868b !important;
+  transition: 0.3s ease-in background-color;
 }
 .fav-btn.saved {
   border-color: #d6b84c;
   background: #ffe082;
   color: #5d4037;
+  transition: 0.3s ease-in-out all;
+}.fav-btn.saved:hover{
+  background-color: rgb(127, 19, 19);
+  border-color: rgb(127, 19, 19);
+  color: #ffe082;
 }
 
 .btn-error {

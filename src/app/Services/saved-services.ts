@@ -6,7 +6,7 @@ export class SavedServices {
     // FINISHED: Part 3: Creating LocalStorage SavedService or Injectable DirectiveAssignment
 
     // Initializing savedIds array
-    private storageKey = 'star-wars-favourites';
+    private storageKey = 'dbz-favourites';
     private savedIds = signal<string[]>(this.load());
     
 

@@ -17,7 +17,7 @@ interface DragonBallCharacter {
 interface CharacterResponse {
     items: DragonBallCharacter[]
 }
-
+// Helper function to convert DragonBallCharacter into an object matching Path model
 function toPath(character: DragonBallCharacter): Path {
   return {
     _id: String(character.id),
@@ -52,8 +52,9 @@ export class PathApi {
     // )
     constructor() {
         effect(() => {
-        const response = this.paths.value();
-        this.pathServ.setCharacters(response.items.map(toPath));
+            const response = this.paths.value();
+            this.pathServ.setCharacters(response.items.map(toPath));
+
         });
     }
     paths = httpResource<CharacterResponse>(
@@ -68,20 +69,15 @@ export class PathApi {
     // byId(id: Signal<string>) {
     //     return httpResource<Path>(() => `${this.url}/${id()}`);
     // }
-
     byId(id: Signal<string | number | null | undefined>) {
         return httpResource<DragonBallCharacter>(() => {
-            const characterId = id();
+            const characterId = Number(id());
 
-            if (
-            characterId == null ||
-            String(characterId).trim() === '' ||
-            String(characterId) === 'undefined'
-            ) {
+            if (!Number.isInteger(characterId) || characterId <= 0) {
             return undefined;
             }
 
-            return `${this.url}/${encodeURIComponent(String(characterId))}`;
+            return `${this.url}/${characterId}`;
         });
     }
 
@@ -94,13 +90,16 @@ export class PathApi {
     //     );
     // }
 
+    // Taking the signal that contains the ID that we want
+    // Returns the computed signal matching chars
     byIds(ids: Signal<string[]>) {
         return computed(() => {
-        const wantedIds = new Set(ids());
+            // new Set(array) creates a collection of unique values with the ids that are passed
+        const filteredIds = new Set(ids());
         const characters = this.paths.value().items;
 
         return characters
-            .filter(character => wantedIds.has(String(character.id)))
+            .filter(character => filteredIds.has(String(character.id)))
             .map(toPath);
         });
     }
