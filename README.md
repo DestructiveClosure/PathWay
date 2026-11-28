@@ -5,11 +5,17 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 <!-- FINISHED: PART 1 -->
 ## API Usage
 
-This app uses the STAR WARS DATABANK.
+~~This app uses the STAR WARS DATABANK.~~
+~~crossed-out text~~
+This app uses the Dragonball API
 
-Docs: https://starwars-databank.vercel.app/
+~~Docs: https://starwars-databank.vercel.app/~~
 
-Example request: `https://starwars-databank-server.onrender.com/api/v1`
+Docs: https://web.dragonball-api.com/documentation
+
+~~Example request: `https://starwars-databank-server.onrender.com/api/v1`~~
+
+Example request: https://dragonball-api.com/api/characters 
 
 <!-- FINISHED: PART 2 -->
 ## HTTPResource Usage
