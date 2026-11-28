@@ -5,10 +5,14 @@
     https://angular.dev/guide/components/styling
   */
 
-
+/*
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:host_function
+The :host() CSS pseudo-class function selects the shadow host of the shadow DOM containing the CSS it is used inside
+so you can select a custom element from inside its shadow DOM
+*/
 :host(.title-hovered) h3 {
-  border-bottom: 3px solid #d8e2c2;
-  border-right: 3px solid #d8e2c2;
+  border-bottom: 3px solid #fed868;
+  border-right: 3px solid #fed868;
   transition: all 1.5s ease-in-out;
 }
 

@@ -49,14 +49,17 @@ export class PathApi {
     // paths = httpResource<CharacterResponse>(
     //     () => `${this.url}`,
     //     {defaultValue: {data: []}}
+    
     // )
     constructor() {
         effect(() => {
+
             const response = this.paths.value();
             this.pathServ.setCharacters(response.items.map(toPath));
 
         });
     }
+
     paths = httpResource<CharacterResponse>(
         () => this.url,
         { defaultValue: { items: [] } }
