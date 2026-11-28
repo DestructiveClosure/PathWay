@@ -13,7 +13,7 @@
         <div>No trails match</div>
     } -->
 
-    @if (pathList.isLoading()) {
+    <!-- @if (pathList.isLoading()) {
         <p>Loading Paths...</p>
     } @else if (pathList.error()) {
         <p>ERROR</p>
@@ -30,8 +30,25 @@
     } @empty {
         <p>No Paths found.</p>
     }
-    }
+    } -->
     
+    @if (apiPaths.isLoading()) {
+        <p>Loading Paths...</p>
+    } @else if (apiPaths.error()) {
+        <p>Error loading characters.</p>
+    } @else {
+    @for (path of pathList(); track path._id; let idx = $index, even = $even) {
+        <app-path-card
+        [index]="idx"
+        [even]="even"
+        (selected)="onPathOpen($event)"
+        [path]="path"
+        (remove)="onPathRemove($event)"
+        />
+    } @empty {
+        <p>No Paths found.</p>
+    }
+    }
 </div>
 
 

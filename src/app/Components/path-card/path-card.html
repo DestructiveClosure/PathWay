@@ -14,6 +14,9 @@
             @if(path().description){
                 
                     <dt appHighlight>{{ path().description  | defaultTxt: "No description available" | trunc: 150 }}</dt>
+                    @if (path().affiliation) {
+                        <dt id="clan-affiliation">Affiliation: {{ path().affiliation }}</dt>
+                    }
             }@else{
                 <dt>No description provided</dt>
             }

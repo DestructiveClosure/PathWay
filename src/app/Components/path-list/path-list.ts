@@ -19,7 +19,8 @@ export class PathList implements OnInit {
   // protected pathList = this.pathServ.pathList;
   private api = inject(PathApi);
 
-  protected pathList = this.api.paths;
+  protected pathList = this.pathServ.pathList;
+  protected apiPaths = this.api.paths;
   
   ngOnInit(): void {
     console.log(`Characters: ${this.pathList}`)

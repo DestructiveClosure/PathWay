@@ -3,6 +3,7 @@ import { PathApi } from './path-api';
 
 @Injectable({ providedIn: 'root' })
 export class SavedServices {
+    // FINISHED: Part 3: Creating LocalStorage SavedService or Injectable DirectiveAssignment
 
     // Initializing savedIds array
     private storageKey = 'star-wars-favourites';
@@ -26,6 +27,9 @@ export class SavedServices {
     }
 
     constructor() {
+        /* 
+            Using Angular's effect to store data into localStorage to persist data on refresh
+        */
         effect(() => {
             try { localStorage.setItem(this.storageKey, JSON.stringify(this.savedIds())); }
             catch { 
@@ -44,10 +48,7 @@ export class SavedServices {
             return [];
         }
     }
-    // For debugging
-    public debugSavedIds(): string[] {
-        return this.savedIds();
-    }
+
     // For favourites page
     getSavedIds(): string[] {
         return this.savedIds();

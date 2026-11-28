@@ -7,7 +7,8 @@ export interface Path {
     name: string,
     description?: string,
     image?: string,
-    isFavourite?: boolean
+    affiliation?: string
+    // isFavourite?: boolean
 }
 
 /* 
@@ -15,7 +16,8 @@ TODO: Matt's Reference Repo:
 
 https://github.com/mathewhaug/BreweryFinderMad307
 
-https://starwars-databank-server.onrender.com/api/v1/characters
+https://starwars-databank-server.onrender.com/api/v1/characters // Suspended API Service
+https://dragonball-api.com/api/characters
 
 Request returns: 
 

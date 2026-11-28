@@ -8,7 +8,7 @@ import { Directive, input, output } from '@angular/core';
 })
 export class AppConfirm {
 
-  // FINISHED: Part 2 - Step 1 - * Creating directive
+  // FINISHED: Part 2 - DirectiveAssignment Step 1 - * Creating directive
   appConfirm = input.required<string>();
   confirmed = output<void>();
 

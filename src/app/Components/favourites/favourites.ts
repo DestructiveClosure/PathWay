@@ -17,13 +17,14 @@ export class Favourites {
     protected paths = this.api.paths;
     protected savedIds = computed(() => this.savedServ.getSavedIds());
 
-    protected favouritePaths = computed(() => {
-      const savedIds = new Set(this.savedIds());
+    // protected favouritePaths = computed(() => {
+    //   const savedIds = new Set(this.savedIds());
 
-      return this.paths.value().data.filter(path =>
-        savedIds.has(path._id)
-      );
-    });
+    //   return this.paths.value().items.filter(path =>
+    //     savedIds.has(path._id)
+    //   );
+    // });
+    protected favouritePaths = this.api.byIds(this.savedIds);
 
    
     protected toggleFavourite(id: string): void {

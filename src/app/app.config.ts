@@ -14,7 +14,8 @@ export const appConfig: ApplicationConfig = {
       provide: PATH_CONFIG,
       useValue: {
         // FINISHED: PART 1
-        apiBaseUrl: "https://starwars-databank-server.onrender.com/api/v1"
+        // apiBaseUrl: "https://starwars-databank-server.onrender.com/api/v1"
+        apiBaseUrl: 'https://dragonball-api.com/api'
       }
     },
     provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor]))

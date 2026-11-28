@@ -12,7 +12,6 @@ import { CopyText } from '../../Directives/copy-text';
 import { AppConfirm } from '../../Directives/app-confirm';
 import { HighlightTitle } from '../../Directives/highlight-title';
 
-
 @Component({
   imports: [RouterLink, TitleCasePipe, DefaultTextPipe, SlicePipe, UpperCasePipe, TitlePipe, DescPipe, CopyText],
   hostDirectives: [{
@@ -24,7 +23,7 @@ import { HighlightTitle } from '../../Directives/highlight-title';
 })
 export class PathCard {
     protected config = inject(PATH_CONFIG);
-
+    color = input('', { alias: 'appHighlight' });
     copied = signal(false);
 
     // Inputs

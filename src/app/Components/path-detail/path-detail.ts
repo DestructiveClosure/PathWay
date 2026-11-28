@@ -36,7 +36,7 @@ export class PathDetail implements OnInit, OnDestroy {
     // console.log(`[lifecycle] opened: ${path?.name ?? 'Unknown'}`);
   }
   /* 
-  FINISHED: Part 4 ngOnInit & ngOnDestroy
+  Part 4 ngOnInit & ngOnDestroy
    */
   ngOnInit(): void {
     this.opened = Date.now();
@@ -54,6 +54,7 @@ export class PathDetail implements OnInit, OnDestroy {
 
   protected savedChar = signal<boolean>(false);
 
+  // FINISHED: Part 3: Creating isSaved method with computed from angular to save id into savedService Array of saved objects
   protected isSaved = computed(() =>
     this.savedServ.isSaved(this.id())
   );
